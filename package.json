@@ -1,0 +1,61 @@
+{
+  "name": "MasGUI",
+  "version": "1.0.0",
+  "description": "Multi Algorithm Switching GUI",
+  "main": "main.js",
+  "scripts": {
+    "postinstall": "install-app-deps",
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "masgui",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "extraResources": {
+      "from": "scripts/",
+      "to": "."
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "NSIS",
+      "icon": "img/icon2.ico"
+    }
+  },
+  "repository": "https://github.com/masgui/masgui",
+  "keywords": [
+    "masgui",
+    "crypto",
+    "mining",
+    "algorithm",
+    "doctororbit"
+  ],
+  "author": "DoctorORBiT",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^1.7.11",
+    "electron-prebuilt": "^1.4.13",
+    "electron-reload": "^1.2.2",
+    "electron-builder": "^19.55.3"
+  },
+  "dependencies": {},
+  "optionalDependencies": {}
+}

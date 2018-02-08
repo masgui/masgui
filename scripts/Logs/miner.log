@@ -1,0 +1,549 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20180208055845
+Username: DESKTOP-TRJ9N0L\tanis
+RunAs User: DESKTOP-TRJ9N0L\tanis
+Machine: DESKTOP-TRJ9N0L (Microsoft Windows NT 10.0.15063.0)
+Host Application: powershell -version 5.0 -noexit -executionpolicy bypass -windowstyle maximized -command F:\Projects\Electron\masgui\scripts\NemosMiner-v2.4.2.ps1 -SelGPUDSTM '0' -SelGPUCC '0' -Currency USD -Passwordcurrency BTC -Interval 30 -Wallet D6VmxuuEDDxY2uSkMLUVS4GGXTEP8Xwnxu -Location US -ActiveMinerGainPct 3 -PoolName hashrefinery -WorkerName doctororbit -Type nvidia -Algorithm phi -Donate 5
+Process ID: 24348
+PSVersion: 5.1.15063.786
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.15063.786
+BuildVersion: 10.0.15063.786
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is .\Logs\miner.log
+Getting up-to-date BTC rates from Coinbase
+Loading Pool Statistics...
+PS>TerminatingError(Invoke-WebRequest): "The remote server returned an error: (500) Internal Server Error."
+PS>TerminatingError(Invoke-WebRequest): "The remote server returned an error: (403) Forbidden."
+PS>TerminatingError(Invoke-WebRequest): "The remote server returned an error: (403) Forbidden."
+PS>TerminatingError(Invoke-WebRequest): "The remote server returned an error: (502) Bad Gateway."
+PS>TerminatingError(Invoke-WebRequest): "The remote server returned an error: (502) Bad Gateway."
+Error contacting pool, retrying..
+Getting up-to-date BTC rates from Coinbase
+Loading Pool Statistics...
+PS>TerminatingError(Invoke-WebRequest): "The remote server returned an error: (403) Forbidden."
+PS>TerminatingError(Invoke-WebRequest): "The remote server returned an error: (403) Forbidden."
+Loading miners...
+Downloading CcminerAlexis78Phi..
+**********************
+Windows PowerShell transcript start
+Start time: 20180208061356
+Username: DESKTOP-TRJ9N0L\tanis
+RunAs User: DESKTOP-TRJ9N0L\tanis
+Machine: DESKTOP-TRJ9N0L (Microsoft Windows NT 10.0.15063.0)
+Host Application: powershell -version 5.0 -noexit -executionpolicy bypass -windowstyle maximized -command F:\Projects\Electron\masgui\scripts\MasGUI-v1.0.1.ps1 -SelGPUDSTM '0' -SelGPUCC '0' -Currency USD -Passwordcurrency BTC -Interval 30 -Wallet D6VmxuuEDDxY2uSkMLUVS4GGXTEP8Xwnxu -Location US -ActiveMinerGainPct 3 -PoolName ahashpool -WorkerName doctororbit -Type nvidia -Algorithm lbry -Donate 5
+Process ID: 17228
+PSVersion: 5.1.15063.786
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.15063.786
+BuildVersion: 10.0.15063.786
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is .\Logs\miner.log
+Getting up-to-date BTC rates from Coinbase
+Loading Pool Statistics...
+PS>TerminatingError(Invoke-WebRequest): "The remote server returned an error: (403) Forbidden."
+PS>TerminatingError(Invoke-WebRequest): "The remote server returned an error: (403) Forbidden."
+Loading miners...
+Downloading ccminerpolytimos..
+**********************
+Windows PowerShell transcript start
+Start time: 20180208061800
+Username: DESKTOP-TRJ9N0L\tanis
+RunAs User: DESKTOP-TRJ9N0L\tanis
+Machine: DESKTOP-TRJ9N0L (Microsoft Windows NT 10.0.15063.0)
+Host Application: powershell -version 5.0 -noexit -executionpolicy bypass -windowstyle maximized -command F:\Projects\Electron\masgui\scripts\MasGUI-v1.0.1.ps1 -SelGPUDSTM '0' -SelGPUCC '0' -Currency USD -Passwordcurrency BTC -Interval 30 -Wallet D6VmxuuEDDxY2uSkMLUVS4GGXTEP8Xwnxu -Location US -ActiveMinerGainPct 3 -PoolName hashrefinery -WorkerName doctororbit -Type nvidia -Algorithm phi -Donate 5
+Process ID: 12892
+PSVersion: 5.1.15063.786
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.15063.786
+BuildVersion: 10.0.15063.786
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is .\Logs\miner.log
+Getting up-to-date BTC rates from Coinbase
+Loading Pool Statistics...
+**********************
+Windows PowerShell transcript start
+Start time: 20180208061852
+Username: DESKTOP-TRJ9N0L\tanis
+RunAs User: DESKTOP-TRJ9N0L\tanis
+Machine: DESKTOP-TRJ9N0L (Microsoft Windows NT 10.0.15063.0)
+Host Application: powershell -version 5.0 -noexit -executionpolicy bypass -windowstyle maximized -command F:\Projects\Electron\masgui\scripts\MasGUI-v1.0.1.ps1 -SelGPUDSTM '0' -SelGPUCC '0' -Currency USD -Passwordcurrency BTC -Interval 30 -Wallet D6VmxuuEDDxY2uSkMLUVS4GGXTEP8Xwnxu -Location US -ActiveMinerGainPct 3 -PoolName minemoney -WorkerName doctororbit -Type nvidia -Algorithm phi -Donate 5
+Process ID: 7104
+PSVersion: 5.1.15063.786
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.15063.786
+BuildVersion: 10.0.15063.786
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is .\Logs\miner.log
+Getting up-to-date BTC rates from Coinbase
+Loading Pool Statistics...
+PS>TerminatingError(Invoke-WebRequest): "The remote server returned an error: (403) Forbidden."
+PS>TerminatingError(Invoke-WebRequest): "The remote server returned an error: (403) Forbidden."
+Loading miners...
+Downloading CcminerAlexis78Phi..
+**********************
+Windows PowerShell transcript start
+Start time: 20180208064625
+Username: DESKTOP-TRJ9N0L\tanis
+RunAs User: DESKTOP-TRJ9N0L\tanis
+Machine: DESKTOP-TRJ9N0L (Microsoft Windows NT 10.0.15063.0)
+Host Application: powershell -version 5.0 -noexit -executionpolicy bypass -windowstyle maximized -command F:\Projects\Electron\masgui\scripts\MasGUI-v1.0.1.ps1 -SelGPUDSTM '0' -SelGPUCC '0' -Currency USD -Passwordcurrency DGB -Interval 30 -Wallet D6VmxuuEDDxY2uSkMLUVS4GGXTEP8Xwnxu -Location US -ActiveMinerGainPct 3 -PoolName hashrefinery -WorkerName doctororbit -Type nvidia -Algorithm bitcore -Donate 5
+Process ID: 12996
+PSVersion: 5.1.15063.786
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.15063.786
+BuildVersion: 10.0.15063.786
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is .\Logs\miner.log
+Getting up-to-date BTC rates from Coinbase
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20180208064629
+Username: DESKTOP-TRJ9N0L\tanis
+RunAs User: DESKTOP-TRJ9N0L\tanis
+Machine: DESKTOP-TRJ9N0L (Microsoft Windows NT 10.0.15063.0)
+Host Application: powershell -version 5.0 -noexit -executionpolicy bypass -windowstyle maximized -command F:\Projects\Electron\masgui\scripts\MasGUI-v1.0.1.ps1 -SelGPUDSTM '0' -SelGPUCC '0' -Currency USD -Passwordcurrency DGB -Interval 30 -Wallet D6VmxuuEDDxY2uSkMLUVS4GGXTEP8Xwnxu -Location US -ActiveMinerGainPct 3 -PoolName hashrefinery -WorkerName doctororbit -Type nvidia -Algorithm bitcore -Donate 5
+Process ID: 9024
+PSVersion: 5.1.15063.786
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.15063.786
+BuildVersion: 10.0.15063.786
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is .\Logs\miner.log
+Getting up-to-date BTC rates from Coinbase
+**********************
+Windows PowerShell transcript start
+Start time: 20180208064731
+Username: DESKTOP-TRJ9N0L\tanis
+RunAs User: DESKTOP-TRJ9N0L\tanis
+Machine: DESKTOP-TRJ9N0L (Microsoft Windows NT 10.0.15063.0)
+Host Application: powershell -version 5.0 -noexit -executionpolicy bypass -windowstyle maximized -command F:\Projects\Electron\masgui\scripts\MasGUI-v1.0.1.ps1 -SelGPUDSTM '0' -SelGPUCC '0' -Currency USD -Passwordcurrency DGB -Interval 30 -Wallet D6VmxuuEDDxY2uSkMLUVS4GGXTEP8Xwnxu -Location US -ActiveMinerGainPct 3 -PoolName hashrefinery -WorkerName doctororbit -Type nvidia -Algorithm bitcore -Donate 5
+Process ID: 14604
+PSVersion: 5.1.15063.786
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.15063.786
+BuildVersion: 10.0.15063.786
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is .\Logs\miner.log
+Cannot convert null to type "System.DateTime".
+At F:\Projects\Electron\masgui\scripts\Include.ps1:34 char:5
++     $Stat = [PSCustomObject]@{
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [], RuntimeException
+    + FullyQualifiedErrorId : nullToObjectInvalidCast
+Cannot convert null to type "System.DateTime".
+At F:\Projects\Electron\masgui\scripts\Include.ps1:34 char:5
++     $Stat = [PSCustomObject]@{
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [], RuntimeException
+    + FullyQualifiedErrorId : nullToObjectInvalidCast
+
+Cannot find an overload for "op_Subtraction" and the argument count: "2".
+At F:\Projects\Electron\masgui\scripts\Include.ps1:51 char:5
++     $Span_Minute = [Math]::Min(($Date - $Stat.Updated).TotalMinutes,  ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodException
+    + FullyQualifiedErrorId : MethodCountCouldNotFindBest
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       **********************
+Windows PowerShell transcript start
+Start time: 20180208065240
+Username: DESKTOP-TRJ9N0L\tanis
+RunAs User: DESKTOP-TRJ9N0L\tanis
+Machine: DESKTOP-TRJ9N0L (Microsoft Windows NT 10.0.15063.0)
+Host Application: powershell -version 5.0 -noexit -executionpolicy bypass -windowstyle maximized -command F:\Projects\Electron\masgui\scripts\MasGUI-v1.0.1.ps1 -SelGPUDSTM '0' -SelGPUCC '0' -Currency USD -Passwordcurrency DGB -Interval 30 -Wallet D6VmxuuEDDxY2uSkMLUVS4GGXTEP8Xwnxu -Location US -ActiveMinerGainPct 3 -PoolName hashrefinery -WorkerName doctororbit -Type nvidia -Algorithm phi -Donate 5
+Process ID: 6708
+PSVersion: 5.1.15063.786
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.15063.786
+BuildVersion: 10.0.15063.786
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is .\Logs\miner.log
+PS>TerminatingError(ConvertFrom-Json): "Invalid JSON primitive: 
+    "Live":  0.0000000000000092763210483911,
+    "Minute":  0.0000000000000092763210483911,
+    "Minute_Fluctuation":  0,
+    "Minute_5":  0.0000000000000092763210483911,
+    "Minute_5_Fluctuation":  0.0024194625623546627,
+    "Minute_10":  0.0000000000000092763210483911,
+    "Minute_10_Fluctuation":  0.0016716478295512474,
+    "Hour":  0.000000000000009278128363195,
+    "Hour_Fluctuation":  0.18193601994640457,
+    "Day":  0.0000000000000092764446619739,
+    "Day_Fluctuation":  0.48312752102577017,
+    "Week":  0.0000000000000092763210483911,
+    "Week_Fluctuation":  0.49756875959201491,
+    "Updated":  "\/Date(1518068876701)\/"
+}."
+ConvertFrom-Json : Invalid JSON primitive: 
+    "Live":  0.0000000000000092763210483911,
+    "Minute":  0.0000000000000092763210483911,
+    "Minute_Fluctuation":  0,
+    "Minute_5":  0.0000000000000092763210483911,
+    "Minute_5_Fluctuation":  0.0024194625623546627,
+    "Minute_10":  0.0000000000000092763210483911,
+    "Minute_10_Fluctuation":  0.0016716478295512474,
+    "Hour":  0.000000000000009278128363195,
+    "Hour_Fluctuation":  0.18193601994640457,
+    "Day":  0.0000000000000092764446619739,
+    "Day_Fluctuation":  0.48312752102577017,
+    "Week":  0.0000000000000092763210483911,
+    "Week_Fluctuation":  0.49756875959201491,
+    "Updated":  "\/Date(1518068876701)\/"
+}.
+At F:\Projects\Electron\masgui\scripts\Include.ps1:125 char:43
++             $Content = $_ | Get-Content | ConvertFrom-Json
++                                           ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [ConvertFrom-Json], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException,Microsoft.PowerShell.Commands.ConvertFromJsonCommand
+ConvertFrom-Json : Invalid JSON primitive:
+    "Live":  0.0000000000000092763210483911,
+    "Minute":  0.0000000000000092763210483911,
+    "Minute_Fluctuation":  0,
+    "Minute_5":  0.0000000000000092763210483911,
+    "Minute_5_Fluctuation":  0.0024194625623546627,
+    "Minute_10":  0.0000000000000092763210483911,
+    "Minute_10_Fluctuation":  0.0016716478295512474,
+    "Hour":  0.000000000000009278128363195,
+    "Hour_Fluctuation":  0.18193601994640457,
+    "Day":  0.0000000000000092764446619739,
+    "Day_Fluctuation":  0.48312752102577017,
+    "Week":  0.0000000000000092763210483911,
+    "Week_Fluctuation":  0.49756875959201491,
+    "Updated":  "\/Date(1518068876701)\/"
+}.
+At F:\Projects\Electron\masgui\scripts\Include.ps1:125 char:43
++             $Content = $_ | Get-Content | ConvertFrom-Json
++                                           ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [ConvertFrom-Json], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException,Microsoft.PowerShell.Commands.ConvertFromJsonCommand
+
+Getting up-to-date BTC rates from Coinbase
+PS>TerminatingError(ConvertFrom-Json): "Invalid JSON primitive: 
+    "Live":  0.0000000000000092763210483911,
+    "Minute":  0.0000000000000092763210483911,
+    "Minute_Fluctuation":  0,
+    "Minute_5":  0.0000000000000092763210483911,
+    "Minute_5_Fluctuation":  0.0024194625623546627,
+    "Minute_10":  0.0000000000000092763210483911,
+    "Minute_10_Fluctuation":  0.0016716478295512474,
+    "Hour":  0.000000000000009278128363195,
+    "Hour_Fluctuation":  0.18193601994640457,
+    "Day":  0.0000000000000092764446619739,
+    "Day_Fluctuation":  0.48312752102577017,
+    "Week":  0.0000000000000092763210483911,
+    "Week_Fluctuation":  0.49756875959201491,
+    "Updated":  "\/Date(1518068876701)\/"
+}."
+ConvertFrom-Json : Invalid JSON primitive: 
+    "Live":  0.0000000000000092763210483911,
+    "Minute":  0.0000000000000092763210483911,
+    "Minute_Fluctuation":  0,
+    "Minute_5":  0.0000000000000092763210483911,
+    "Minute_5_Fluctuation":  0.0024194625623546627,
+    "Minute_10":  0.0000000000000092763210483911,
+    "Minute_10_Fluctuation":  0.0016716478295512474,
+    "Hour":  0.000000000000009278128363195,
+    "Hour_Fluctuation":  0.18193601994640457,
+    "Day":  0.0000000000000092764446619739,
+    "Day_Fluctuation":  0.48312752102577017,
+    "Week":  0.0000000000000092763210483911,
+    "Week_Fluctuation":  0.49756875959201491,
+    "Updated":  "\/Date(1518068876701)\/"
+}.
+At F:\Projects\Electron\masgui\scripts\Include.ps1:125 char:43
++             $Content = $_ | Get-Content | ConvertFrom-Json
++                                           ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [ConvertFrom-Json], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException,Microsoft.PowerShell.Commands.ConvertFromJsonCommand
+ConvertFrom-Json : Invalid JSON primitive:
+    "Live":  0.0000000000000092763210483911,
+    "Minute":  0.0000000000000092763210483911,
+    "Minute_Fluctuation":  0,
+    "Minute_5":  0.0000000000000092763210483911,
+    "Minute_5_Fluctuation":  0.0024194625623546627,
+    "Minute_10":  0.0000000000000092763210483911,
+    "Minute_10_Fluctuation":  0.0016716478295512474,
+    "Hour":  0.000000000000009278128363195,
+    "Hour_Fluctuation":  0.18193601994640457,
+    "Day":  0.0000000000000092764446619739,
+    "Day_Fluctuation":  0.48312752102577017,
+    "Week":  0.0000000000000092763210483911,
+    "Week_Fluctuation":  0.49756875959201491,
+    "Updated":  "\/Date(1518068876701)\/"
+}.
+At F:\Projects\Electron\masgui\scripts\Include.ps1:125 char:43
++             $Content = $_ | Get-Content | ConvertFrom-Json
++                                           ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [ConvertFrom-Json], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException,Microsoft.PowerShell.Commands.ConvertFromJsonCommand
+
+Loading Pool Statistics...
+PS>TerminatingError(ConvertFrom-Json): "Invalid JSON primitive: 
+    "Live":  0.0000000000000092763210483911,
+    "Minute":  0.0000000000000092763210483911,
+    "Minute_Fluctuation":  0,
+    "Minute_5":  0.0000000000000092763210483911,
+    "Minute_5_Fluctuation":  0.0024194625623546627,
+    "Minute_10":  0.0000000000000092763210483911,
+    "Minute_10_Fluctuation":  0.0016716478295512474,
+    "Hour":  0.000000000000009278128363195,
+    "Hour_Fluctuation":  0.18193601994640457,
+    "Day":  0.0000000000000092764446619739,
+    "Day_Fluctuation":  0.48312752102577017,
+    "Week":  0.0000000000000092763210483911,
+    "Week_Fluctuation":  0.49756875959201491,
+    "Updated":  "\/Date(1518068876701)\/"
+}."
+ConvertFrom-Json : Invalid JSON primitive: 
+    "Live":  0.0000000000000092763210483911,
+    "Minute":  0.0000000000000092763210483911,
+    "Minute_Fluctuation":  0,
+    "Minute_5":  0.0000000000000092763210483911,
+    "Minute_5_Fluctuation":  0.0024194625623546627,
+    "Minute_10":  0.0000000000000092763210483911,
+    "Minute_10_Fluctuation":  0.0016716478295512474,
+    "Hour":  0.000000000000009278128363195,
+    "Hour_Fluctuation":  0.18193601994640457,
+    "Day":  0.0000000000000092764446619739,
+    "Day_Fluctuation":  0.48312752102577017,
+    "Week":  0.0000000000000092763210483911,
+    "Week_Fluctuation":  0.49756875959201491,
+    "Updated":  "\/Date(1518068876701)\/"
+}.
+At F:\Projects\Electron\masgui\scripts\Include.ps1:109 char:113
++ ... 1" | Where-Object BaseName -EQ $Name | Get-Content | ConvertFrom-Json
++                                                          ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [ConvertFrom-Json], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException,Microsoft.PowerShell.Commands.ConvertFromJsonCommand
+ConvertFrom-Json : Invalid JSON primitive:
+    "Live":  0.0000000000000092763210483911,
+    "Minute":  0.0000000000000092763210483911,
+    "Minute_Fluctuation":  0,
+    "Minute_5":  0.0000000000000092763210483911,
+    "Minute_5_Fluctuation":  0.0024194625623546627,
+    "Minute_10":  0.0000000000000092763210483911,
+    "Minute_10_Fluctuation":  0.0016716478295512474,
+    "Hour":  0.000000000000009278128363195,
+    "Hour_Fluctuation":  0.18193601994640457,
+    "Day":  0.0000000000000092764446619739,
+    "Day_Fluctuation":  0.48312752102577017,
+    "Week":  0.0000000000000092763210483911,
+    "Week_Fluctuation":  0.49756875959201491,
+    "Updated":  "\/Date(1518068876701)\/"
+}.
+At F:\Projects\Electron\masgui\scripts\Include.ps1:109 char:113
++ ... 1" | Where-Object BaseName -EQ $Name | Get-Content | ConvertFrom-Json
++                                                          ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [ConvertFrom-Json], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException,Microsoft.PowerShell.Commands.ConvertFromJsonCommand
+
+PS>TerminatingError(ConvertFrom-Json): "Invalid JSON primitive: 
+    "Live":  0.0000000000000092763210483911,
+    "Minute":  0.0000000000000092763210483911,
+    "Minute_Fluctuation":  0,
+    "Minute_5":  0.0000000000000092763210483911,
+    "Minute_5_Fluctuation":  0.0024194625623546627,
+    "Minute_10":  0.0000000000000092763210483911,
+    "Minute_10_Fluctuation":  0.0016716478295512474,
+    "Hour":  0.000000000000009278128363195,
+    "Hour_Fluctuation":  0.18193601994640457,
+    "Day":  0.0000000000000092764446619739,
+    "Day_Fluctuation":  0.48312752102577017,
+    "Week":  0.0000000000000092763210483911,
+    "Week_Fluctuation":  0.49756875959201491,
+    "Updated":  "\/Date(1518068876701)\/"
+}."
+ConvertFrom-Json : Invalid JSON primitive: 
+    "Live":  0.0000000000000092763210483911,
+    "Minute":  0.0000000000000092763210483911,
+    "Minute_Fluctuation":  0,
+    "Minute_5":  0.0000000000000092763210483911,
+    "Minute_5_Fluctuation":  0.0024194625623546627,
+    "Minute_10":  0.0000000000000092763210483911,
+    "Minute_10_Fluctuation":  0.0016716478295512474,
+    "Hour":  0.000000000000009278128363195,
+    "Hour_Fluctuation":  0.18193601994640457,
+    "Day":  0.0000000000000092764446619739,
+    "Day_Fluctuation":  0.48312752102577017,
+    "Week":  0.0000000000000092763210483911,
+    "Week_Fluctuation":  0.49756875959201491,
+    "Updated":  "\/Date(1518068876701)\/"
+}.
+At F:\Projects\Electron\masgui\scripts\Include.ps1:32 char:55
++ ...   if (Test-Path $Path) {$Stat = Get-Content $Path | ConvertFrom-Json}
++                                                         ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [ConvertFrom-Json], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException,Microsoft.PowerShell.Commands.ConvertFromJsonCommand
+ConvertFrom-Json : Invalid JSON primitive:
+    "Live":  0.0000000000000092763210483911,
+    "Minute":  0.0000000000000092763210483911,
+    "Minute_Fluctuation":  0,
+    "Minute_5":  0.0000000000000092763210483911,
+    "Minute_5_Fluctuation":  0.0024194625623546627,
+    "Minute_10":  0.0000000000000092763210483911,
+    "Minute_10_Fluctuation":  0.0016716478295512474,
+    "Hour":  0.000000000000009278128363195,
+    "Hour_Fluctuation":  0.18193601994640457,
+    "Day":  0.0000000000000092764446619739,
+    "Day_Fluctuation":  0.48312752102577017,
+    "Week":  0.0000000000000092763210483911,
+    "Week_Fluctuation":  0.49756875959201491,
+    "Updated":  "\/Date(1518068876701)\/"
+}.
+At F:\Projects\Electron\masgui\scripts\Include.ps1:32 char:55
++ ...   if (Test-Path $Path) {$Stat = Get-Content $Path | ConvertFrom-Json}
++                                                         ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [ConvertFrom-Json], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException,Microsoft.PowerShell.Commands.ConvertFromJsonCommand
+
+PS>TerminatingError(Invoke-WebRequest): "The remote server returned an error: (403) Forbidden."
+PS>TerminatingError(Invoke-WebRequest): "The remote server returned an error: (403) Forbidden."
+Loading miners...
+Downloading CcminerAlexis78Phi..
+**********************
+Windows PowerShell transcript start
+Start time: 20180208065500
+Username: DESKTOP-TRJ9N0L\tanis
+RunAs User: DESKTOP-TRJ9N0L\tanis
+Machine: DESKTOP-TRJ9N0L (Microsoft Windows NT 10.0.15063.0)
+Host Application: powershell -version 5.0 -noexit -executionpolicy bypass -windowstyle maximized -command F:\Projects\Electron\masgui\scripts\MasGUI-v1.0.1.ps1 -SelGPUDSTM '0' -SelGPUCC '0' -Currency USD -Passwordcurrency DGB -Interval 30 -Wallet D6VmxuuEDDxY2uSkMLUVS4GGXTEP8Xwnxu -Location US -ActiveMinerGainPct 3 -PoolName hashrefinery -WorkerName doctororbit -Type nvidia -Algorithm phi -Donate 5
+Process ID: 15944
+PSVersion: 5.1.15063.786
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.15063.786
+BuildVersion: 10.0.15063.786
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is .\Logs\miner.log
+Getting up-to-date BTC rates from Coinbase
+Loading Pool Statistics...
+**********************
+Windows PowerShell transcript start
+Start time: 20180208190836
+Username: DESKTOP-TRJ9N0L\tanis
+RunAs User: DESKTOP-TRJ9N0L\tanis
+Machine: DESKTOP-TRJ9N0L (Microsoft Windows NT 10.0.15063.0)
+Host Application: powershell -version 5.0 -noexit -executionpolicy bypass -windowstyle maximized -command F:\Projects\Electron\masgui-main\scripts\MasGUI-v1.0.1.ps1 -SelGPUDSTM '0' -SelGPUCC '0' -Currency USD -Passwordcurrency DGB -Interval 30 -Wallet D6VmxuuEDDxY2uSkMLUVS4GGXTEP8Xwnxu -Location US -ActiveMinerGainPct 3 -PoolName hashrefinery -WorkerName doctororbit -Type nvidia -Algorithm phi -Donate 5
+Process ID: 4788
+PSVersion: 5.1.15063.786
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.15063.786
+BuildVersion: 10.0.15063.786
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is .\Logs\miner.log
+Getting up-to-date BTC rates from Coinbase
+Loading Pool Statistics...
+PS>TerminatingError(Invoke-WebRequest): "The remote server returned an error: (403) Forbidden."
+PS>TerminatingError(Invoke-WebRequest): "The remote server returned an error: (403) Forbidden."
+Loading miners...
+Downloading CcminerAlexis78Phi..
+No Miners!
+**********************
+Windows PowerShell transcript start
+Start time: 20180208190936
+Username: DESKTOP-TRJ9N0L\tanis
+RunAs User: DESKTOP-TRJ9N0L\tanis
+Machine: DESKTOP-TRJ9N0L (Microsoft Windows NT 10.0.15063.0)
+Host Application: powershell -version 5.0 -noexit -executionpolicy bypass -windowstyle maximized -command F:\Projects\Electron\masgui-main\scripts\MasGUI-v1.0.1.ps1 -SelGPUDSTM '0' -SelGPUCC '0' -Currency USD -Passwordcurrency DGB -Interval 30 -Wallet D6VmxuuEDDxY2uSkMLUVS4GGXTEP8Xwnxu -Location US -ActiveMinerGainPct 3 -PoolName hashrefinery -WorkerName doctororbit -Type nvidia -Algorithm phi -Donate 5
+Process ID: 11188
+PSVersion: 5.1.15063.786
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.15063.786
+BuildVersion: 10.0.15063.786
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is .\Logs\miner.log
+Getting up-to-date BTC rates from Coinbase
+Loading Pool Statistics...
+PS>TerminatingError(Invoke-WebRequest): "The remote server returned an error: (403) Forbidden."
+PS>TerminatingError(Invoke-WebRequest): "The remote server returned an error: (403) Forbidden."
+Loading miners...
+1 BTC =  8104.02 USD
+
+PS>TerminatingError(ForEach-Object): "You cannot call a method on a null-valued expression."
+
+   Type: NVIDIA
+
+Miner              Algorithm        Speed     mBTC/Day      BTC/Day      USD/Day BTC/GH/Day Pool
+-----              ---------        -----     --------      -------      ------- ---------- ----
+CcminerAlexis78Phi Phi       Benchmarking Benchmarking Benchmarking Benchmarking            -
+
+
+Running:
+
+    Speed Started  Active   Cnt  Command
+    ----- -------  ------   ---  -------
+0.00 PH/s 00:00:00 00:00:00 Once Bin\NVIDIA-Alexis78Phi\ccminer.exe -a phi -o stratum+tcp://: -u  -p  -d 0 --api-remote
+
+
+--------------------------------------------------------------------------------
+Last Refresh: 02/08/2018 19:09:55
+Sleep 150 sec
+**********************
+Windows PowerShell transcript start
+Start time: 20180208191057
+Username: DESKTOP-TRJ9N0L\tanis
+RunAs User: DESKTOP-TRJ9N0L\tanis
+Machine: DESKTOP-TRJ9N0L (Microsoft Windows NT 10.0.15063.0)
+Host Application: powershell -version 5.0 -noexit -executionpolicy bypass -windowstyle maximized -command F:\Projects\Electron\masgui-main\scripts\MasGUI-v1.0.1.ps1 -SelGPUDSTM '0' -SelGPUCC '0' -Currency USD -Passwordcurrency DGB -Interval 30 -Wallet D6VmxuuEDDxY2uSkMLUVS4GGXTEP8Xwnxu -Location US -ActiveMinerGainPct 3 -PoolName hashrefinery -WorkerName doctororbit -Type nvidia -Algorithm bitcore -Donate 5
+Process ID: 8076
+PSVersion: 5.1.15063.786
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.15063.786
+BuildVersion: 10.0.15063.786
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is .\Logs\miner.log
+Getting up-to-date BTC rates from Coinbase
+Loading Pool Statistics...
+PS>TerminatingError(Invoke-WebRequest): "The remote server returned an error: (403) Forbidden."
+PS>TerminatingError(Invoke-WebRequest): "The remote server returned an error: (403) Forbidden."
+Loading miners...
+Downloading CcminerTpruvot..
+No Miners!

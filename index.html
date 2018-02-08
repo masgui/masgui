@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>MasGUI</title>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<!-- Custom Title Bar  -->
+<div class="title-bar noselect">
+  <div class="title-bar-title"><a>MasGUI 0.9.0</a></div>
+  <div class="title-bar-btns">
+    <button id="min-btn"><i class="fas fa-minus"></i></button>
+    <button id="max-btn"><i class="far fa-square"></i></button>
+    <button id="close-btn"><i class="fas fa-times"></i></button>
+  </div>
+</div>
+
+<body class="scrollbar">
+
+
+  <div id="vueapp">
+    <div class="container-fluid">
+      <div class="jumbotron">
+
+        <h1 class="title noselect">MASGUI</h1>
+
+        <!-- Inputs -->
+        <template v-for="inp in inputs">
+          <div class="form-group has-danger">
+            <label :for="inp.value">{{ inp.name }}</label>
+            <input type="text" v-bind:class="{ 'is-invalid': missingName(inp) }" class="form-control form-control-lg input-class" :placeholder="inp.value" v-model="inp.value">
+            <small class="form-text text-muted help-text">{{ inp.help }}</small>
+            <div class="invalid-feedback">{{ inp.message }}</div>
+          </div>
+        </template>
+
+        <!-- Select Pool -->
+        <div id="selectDiv" class="form-group">
+          <label :for="poolname">Pool:</label>
+          <div class="form-control">
+            <select v-on:click="clearCheckedAlgos" class="custom-select" v-model="poolname" aria-describedby="poolname">
+              <option disabled value="">
+                Please Select One
+              </option>
+              <option :value="pool.toLowerCase()" v-for="pool in poolnames">
+                {{ pool }}
+              </option>
+            </select>
+            <small id="poolname" class="form-text text-muted pool-help-text">Select a Pool to see the available Algorithms you can choose from. <br /> It will run a Bechmark once you Start Mining that Algorithm for the first time (for 150 seconds per algorithm)</small>
+          </div>
+        </div>
+
+        <!-- Algorithm Checkbox -->
+        <div id="algoDiv" class="form-group row">
+          <template v-for="algo in pools[poolname]">
+              <div class="custom-control custom-checkbox col col-md-3 col-sm-4">
+                  <input class="custom-control-input" :id="algo" :name="algo" type="checkbox" v-bind:value="algo" v-model="checkedAlgos">
+                  <label class="custom-control-label" :for="algo">{{ algo }}</label>
+              </div>
+          </template>
+        </div>
+
+        <!-- Mining Button IF's -->
+        <div class="form-group">
+          <button v-if="showButton" v-on:click="switchAndStartMiner(Algos)" type="button" class="btn btn-primary btn-block">Start Mining</button>
+          <button v-if="!startM" v-on:click="switchAndStartMiner(__dirname.substring(0, __dirname.length - 9) + '\\stop.bat')" type="button" class="btn btn-primary btn-block">Stop & Close all Mining Windows</button>
+          <button v-if="!startM" v-on:click="executeCommand(__dirname.substring(0, __dirname.length - 9) + '\\restart.bat')" type="button" class="btn btn-primary btn-block">Restart Current Miner (incase of an error)</button>
+        </div>
+
+
+        <!-- Reset Benchmark & Profits -->
+        <div class="row">
+          <div class="reset-buttons col col-md-6">
+            <button v-on:click="executeCommand(__dirname.substring(0, __dirname.length - 9) + '\\resetbenchmark.bat')" class="btn btn-success btn-block">
+              Reset Benchmark Statistics
+            </button>
+          </div>
+          <div class="reset-buttons col col-md-6">
+            <button v-on:click="executeCommand(__dirname.substring(0, __dirname.length - 9) + '\\resetprofit.bat')" class="btn btn-success btn-block">
+              Reset Profit Statistics
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    require('./vuemain.js')
+    require('./titlebar.js')
+  </script>
+</body>
+
+</html>
