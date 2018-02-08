@@ -8,14 +8,14 @@ const vueapp = new Vue({
     checkedAlgos: [],
     alglolist: '',
     poolnames: [
-      "ahashpool",
-      "blazepool",
-      "hashrefinery",
-      "minemoney",
-      "miningpoolhub",
-      "nicehash",
-      "zergpool",
-      "zpool"
+      "AHashpool",
+      "Blazepool",
+      "Hashrefinery",
+      "Minemoney",
+      "Miningpoolhub",
+      "Nicehash",
+      "Zergpool",
+      "Zpool"
     ],
     pools: {
       ahashpool: ["xevan", "hsr", "phi", "tribus", "c11", "lbry", "skein", "sib", "bitcore", "x17", "Nist5", "MyriadGroestl", "Lyra2RE2", "neoscrypt", "blake2s", "skunk"],
@@ -191,7 +191,7 @@ const vueapp = new Vue({
         "-Wallet " + this.inputs.walletadress.value,
         "-Location " + this.inputs.location.value,
         "-ActiveMinerGainPct " + this.inputs.gaimpact.value,
-        "-PoolName " + this.poolname,
+        "-PoolName " + this.poolname.toLowerCase(),
         "-WorkerName " + this.inputs.workername.value,
         "-Type nvidia",
         "-Algorithm " + this.algolist,
