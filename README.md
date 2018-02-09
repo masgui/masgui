@@ -1,4 +1,6 @@
 # MASGUI
+[![GitHub release](https://img.shields.io/github/release/masgui/masgui.svg)](https://github.com/masgui/masgui/releases/latest)
+
 
 This is a Miner which switches based on the current most profitable algorithm (checks every 5 minutes).
 
