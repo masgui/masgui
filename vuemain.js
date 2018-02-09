@@ -35,7 +35,7 @@ const vueapp = new Vue({
         message: ""
       },
       walletcoin: {
-        name: "Wallet Coin:",
+        name: "Wallet Coin Symbol:",
         value: "DGB",
         help: "Using a BTC Wallet Address is recommended, but it can be set to any coin that the Pool supports (Blazepool ONLY supports BTC).",
         message: ""
