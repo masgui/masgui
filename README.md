@@ -2,6 +2,8 @@
 
 [![GitHub release](https://img.shields.io/github/release/masgui/masgui.svg)](https://github.com/masgui/masgui/releases/latest)
 [![David-DM](https://david-dm.org/masgui/masgui.svg)](https://david-dm.org/masgui/masgui)
+[![Github commits (since latest release)](https://img.shields.io/github/commits-since/masgui/masgui/latest.svg)](https://github.com/masgui/masgui/commits/master)
+[![Twitter URL](https://img.shields.io/twitter/url/http/github.com/masgui/masgui.svg?style=social)](https://google.com)
 
 
 This is a Miner which switches based on the current most profitable algorithm (checks every 5 minutes).
