@@ -16,8 +16,9 @@ No prerequisites.
 
 To build the app on your machine:
 
+
 ```
-git clone https://github.com/masgui/masgui
+git clone https://github.com/masgui/masgui.git
 cd masgui
 npm i
 ```
@@ -43,6 +44,7 @@ npm run dist
 
 ## Built With
 
+[![Electron](https://badges.github.io/badge/Electron-v1.7.11-brightgreen.svg)]()
 * [Electron v1.7.11](https://github.com/electron/electron)
 * [Electron Builder v19.55.3](https://github.com/electron-userland/electron-builder)
 * [Vue.js v2.5.13](https://github.com/vuejs/vue)
