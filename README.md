@@ -45,6 +45,7 @@ npm run dist
 ## Built With
 
 [![Electron](https://badges.github.io/badge/Electron-v1.7.11-brightgreen.svg)](https://github.com/electron/electron)
+[![Github All Releases](https://img.shields.io/github/downloads/atom/atom/total.svg)](https://github.com/electron)
 * [Electron v1.7.11](https://github.com/electron/electron)
 * [Electron Builder v19.55.3](https://github.com/electron-userland/electron-builder)
 * [Vue.js v2.5.13](https://github.com/vuejs/vue)
