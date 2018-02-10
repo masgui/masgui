@@ -4,9 +4,12 @@ const vueapp = new Vue({
     startM: true,
     gpulist: '',
     command: '',
-    poolname: '',
     checkedAlgos: [],
     alglolist: '',
+    coinsymbols: [
+      "ABY", "ACP", "ALQO", "ARG", "ARTX", "AUR", "BELA", "BERN", "BLAS", "BOLI", "BSD", "BTB", "BTC", "BTCZ", "BTQ", "BTX", "CANN", "CDN", "CESC", "CHAN", "COPPER", "CPN", "CRC", "CRW", "DASH", "DFS", "DGB", "DGC", "DNR", "DOGE", "DSR", "EDC", "EDDIE", "EFL", "ELM", "EQT", "EVO", "FLO", "FTC", "GAME", "GBX", "GEERT", "GRS", "GUN", "HBC", "HOLD", "HPC", "HSR", "HUSH", "INN", "IRL", "KASH", "KMD", "KRONE", "LBC", "LBTC", "LEA", "LTC", "LTCU", "LUX", "MAC", "MAR", "MARS", "MATRX", "MAX", "MAY", "MBL", "MEC", "MONA", "MONK", "MUE", "MZC", "NEVA", "NKC", "NLG", "NOTE", "NVC", "NYC", "ONEX", "ONX", "ORB", "PAK", "PBS", "PCOIN", "PHILS", "PINK", "PIZZA", "PLC", "PLYS", "PPC", "PTC", "PURA", "Q2C", "QTL", "RAP", "RUP", "SAND", "SIB", "SKR", "SMC", "SONG", "SPK", "START", "SXC", "TAJ", "THC", "TIT", "TRC", "TZC", "UIS", "UNB", "UNIC", "VSX", "VTC", "WDC", "XCT", "XMCC", "XMG", "XMY", "XRE", "XSH", "XVG", "ZCL", "ZSE", "ZYD"
+    ],
+    coinsymbol: "",
     poolnames: [
       "AHashpool",
       "Blazepool",
@@ -17,6 +20,7 @@ const vueapp = new Vue({
       "Zergpool",
       "Zpool"
     ],
+    poolname: '',
     pools: {
       ahashpool: ["xevan", "hsr", "phi", "tribus", "c11", "lbry", "skein", "sib", "bitcore", "x17", "Nist5", "MyriadGroestl", "Lyra2RE2", "neoscrypt", "blake2s", "skunk"],
       blazepool: ["xevan", "hsr", "phi", "tribus", "c11", "skein", "groestl", "sib", "bitcore", "x17", "Nist5", "Lyra2RE2", "neoscrypt", "blake2s", "yescrypt", "blakecoin", "keccak"],
@@ -34,16 +38,10 @@ const vueapp = new Vue({
         help: "Make sure that this is a valid address and use the matching coin symbol below!",
         message: ""
       },
-      walletcoin: {
-        name: "Wallet Coin Symbol:",
-        value: "DGB",
-        help: "Using a BTC Wallet Address is recommended, but it can be set to any coin that the Pool supports (Blazepool ONLY supports BTC).",
-        message: ""
-      },
       workerlogin: {
         name: "Worker Login:",
         value: "doctororbit",
-        help: "Only required for MiningPoolHub.",
+        help: "Only required for MiningPoolHub (You need to register there first).",
         message: ""
       },
       workername: {
@@ -186,7 +184,7 @@ const vueapp = new Vue({
         "-SelGPUDSTM \'" + this.gpuNumbers.gpus + "'",
         "-SelGPUCC \'" + this.gpuNumbers.gpuc + "'",
         "-Currency " + this.inputs.currency.value,
-        "-Passwordcurrency " + this.inputs.walletcoin.value,
+        "-Passwordcurrency " + this.coinsymbol,
         "-Interval 30",
         "-Wallet " + this.inputs.walletadress.value,
         "-Location " + this.inputs.location.value,

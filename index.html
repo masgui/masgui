@@ -13,7 +13,7 @@
 
 <!-- Custom Title Bar  -->
 <div class="title-bar noselect">
-  <div class="title-bar-title"><a>MasGUI 1.0.0</a></div>
+  <div class="title-bar-title"><a>MasGUI 1.0.1</a></div>
   <div class="title-bar-btns">
     <button id="min-btn"><i class="fas fa-minus"></i></button>
     <button id="max-btn"><i class="far fa-square"></i></button>
@@ -30,6 +30,21 @@
 
         <h1 class="title noselect">MASGUI</h1>
 
+        <!-- Wallet Coin Symbol -->
+        <div class="form-group">
+          <label :for="coinsymbol">Wallet Coin Symbol:</label>
+          <div class="form-control">
+            <select class="custom-select" v-model="coinsymbol" aria-describedby="coinsymbol">
+              <option disabled value="">
+                Please Select One
+              </option>
+              <option :value="coin" v-for="coin in coinsymbols">
+                {{ coin }}
+              </option>
+            </select>
+          </div>
+        </div>
+
         <!-- Inputs -->
         <template v-for="inp in inputs">
           <div class="form-group has-danger">
@@ -39,6 +54,8 @@
             <div class="invalid-feedback">{{ inp.message }}</div>
           </div>
         </template>
+
+
 
         <!-- Select Pool -->
         <div id="selectDiv" class="form-group">
@@ -52,7 +69,7 @@
                 {{ pool }}
               </option>
             </select>
-            <small id="poolname" class="form-text text-muted pool-help-text">Select a Pool to see the available Algorithms you can choose from. <br /> It will run a Bechmark once you Start Mining that Algorithm for the first time (for 150 seconds per algorithm)</small>
+            <small id="poolname" class="form-text text-muted pool-help-text">Select a Pool to see the available Algorithms you can choose from. <br /> It will run a Bechmark once you Start Mining that Algorithm for the first time (for 150 seconds per algorithm) <br> Check the pools website for more information</small>
           </div>
         </div>
 

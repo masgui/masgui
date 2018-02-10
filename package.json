@@ -1,6 +1,6 @@
 {
   "name": "MasGUI",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Multi Algorithm Switching GUI",
   "main": "main.js",
   "scripts": {
@@ -51,7 +51,7 @@
   "author": "DoctorORBiT",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^1.7.11",
+    "electron": "^1.8.2",
     "electron-prebuilt": "^1.4.13",
     "electron-reload": "^1.2.2",
     "electron-builder": "^19.55.3"
