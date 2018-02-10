@@ -1,9 +1,9 @@
 ![MasGUI](https://i.imgur.com/hor5HIC.png)
 
-[![GitHub release](https://img.shields.io/github/release/masgui/masgui.svg)](https://github.com/masgui/masgui/releases/latest)
-[![David-DM](https://david-dm.org/masgui/masgui.svg)](https://david-dm.org/masgui/masgui)
-[![Github commits (since latest release)](https://img.shields.io/github/commits-since/masgui/masgui/latest.svg)](https://github.com/masgui/masgui/commits/master)
-[![](https://img.shields.io/github/issues-raw/masgui/masgui.svg)](https://github.com/masgui/masgui/issues)
+[![GitHub release](https://img.shields.io/github/release/masgui/masgui.svg?style=flat-square)](https://github.com/masgui/masgui/releases/latest)
+[![David-DM](https://david-dm.org/masgui/masgui.svg?style=flat-square)](https://david-dm.org/masgui/masgui)
+[![Github commits (since latest release)](https://img.shields.io/github/commits-since/masgui/masgui/latest.svg?style=flat-square)](https://github.com/masgui/masgui/commits/master)
+[![](https://img.shields.io/github/issues-raw/masgui/masgui.svg?style=flat-square)](https://github.com/masgui/masgui/issues)
 
 This is a Miner which switches based on the current most profitable algorithm (checks every 5 minutes).
 
@@ -49,11 +49,11 @@ npm run dist
 
 ## Built With
 
-* [Electron ](https://electronjs.org/) [![GitHub release](https://img.shields.io/github/release/electron/electron.svg)](https://github.com/electron/electron/releases/latest)
-* [Electron Builder ](https://github.com/electron-userland/electron-builder) [![GitHub release](https://img.shields.io/github/release/electron-userland/electron-builder.svg)](https://github.com/electron-userland/electron-builder/releases/latest)
-* [Vue.js ](https://vuejs.org/) [![GitHub release](https://img.shields.io/github/release/vuejs/vue.svg)](https://github.com/vuejs/vue/releases/latest)
-* [Bootstrap ](https://getbootstrap.com/) [![GitHub release](https://img.shields.io/github/release/twbs/bootstrap.svg)](https://github.com/twbs/bootstrap/releases/latest)
-* [Atom ](https://atom.io/) [![GitHub release](https://img.shields.io/github/release/atom/atom.svg)](https://github.com/atom/atom/releases/latest)
+* [Electron ](https://electronjs.org/) [![GitHub release](https://img.shields.io/github/release/electron/electron.svg?style=flat-square)](https://github.com/electron/electron/releases/latest)
+* [Electron Builder ](https://github.com/electron-userland/electron-builder) [![GitHub release](https://img.shields.io/github/release/electron-userland/electron-builder.svg?style=flat-square)](https://github.com/electron-userland/electron-builder/releases/latest)
+* [Vue.js ](https://vuejs.org/) [![GitHub release](https://img.shields.io/github/release/vuejs/vue.svg?style=flat-square)](https://github.com/vuejs/vue/releases/latest)
+* [Bootstrap ](https://getbootstrap.com/) [![GitHub release](https://img.shields.io/github/release/twbs/bootstrap.svg?style=flat-square)](https://github.com/twbs/bootstrap/releases/latest)
+* [Atom ](https://atom.io/) [![GitHub release](https://img.shields.io/github/release/atom/atom.svg?style=flat-square)](https://github.com/atom/atom/releases/latest)
 
 ## Contributing
 
