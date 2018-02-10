@@ -49,12 +49,11 @@ npm run dist
 
 ## Built With
 
-[![Github All Releases](https://img.shields.io/github/downloads/electron/electron/total.svg)](https://github.com/electron)
-* [Electron v1.7.11](https://github.com/electron/electron)
-* [Electron Builder v19.55.3](https://github.com/electron-userland/electron-builder)
-* [Vue.js v2.5.13](https://github.com/vuejs/vue)
-* [Bootstrap v4.0](https://github.com/twbs/bootstrap)
-* [Atom v1.23.3](https://github.com/atom/atom)
+* [Electron ](https://electronjs.org/) [![GitHub release](https://img.shields.io/github/release/electron/electron.svg)](https://github.com/electron/electron/releases/latest)
+* [Electron Builder ](https://github.com/electron-userland/electron-builder) [![GitHub release](https://img.shields.io/github/release/electron-userland/electron-builder.svg)](https://github.com/electron-userland/electron-builder/releases/latest)
+* [Vue.js ](https://vuejs.org/) [![GitHub release](https://img.shields.io/github/release/vuejs/vue.svg)](https://github.com/vuejs/vue/releases/latest)
+* [Bootstrap ](https://getbootstrap.com/) [![GitHub release](https://img.shields.io/github/release/twbs/bootstrap.svg)](https://github.com/twbs/bootstrap/releases/latest)
+* [Atom ](https://atom.io/) [![GitHub release](https://img.shields.io/github/release/atom/atom.svg)](https://github.com/atom/atom/releases/latest)
 
 ## Contributing
 
