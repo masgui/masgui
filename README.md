@@ -69,8 +69,13 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 See also the list of [contributors](https://github.com/masgui/masgui/contributors) who participated in this project.
 
+## Donate
+
+* ETH: tba
+* DGB: D6VmxuuEDDxY2uSkMLUVS4GGXTEP8Xwnxu
+
 ## Acknowledgments
 
-* NemosMiner v2.4.2 (modified)
+* [NemosMiner v2.4.2 (modified)](https://github.com/nemosminer/NemosMiner-v2.4.2)
 * [DeathPosion](https://github.com/DeathPoison)
 * [Shields.io](https://shields.io/)
