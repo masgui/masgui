@@ -1,4 +1,4 @@
-![MasGUI](img/header.png)
+<img align="center" src="img/header.png" />
 
 [![GitHub release](https://img.shields.io/github/release/masgui/masgui.svg?style=flat-square)](https://github.com/masgui/masgui/releases/latest)
 [![David-DM](https://david-dm.org/masgui/masgui.svg?style=flat-square)](https://david-dm.org/masgui/masgui)
@@ -35,8 +35,6 @@ In Directory: ../masgui/
 npm run start
 ```
 
-
-
 ## Deployment
 
 Package App for the OS you are running on
@@ -46,6 +44,11 @@ In Directory: ../masgui/
 npm run dist
 ```
 (Refer to [electron-builder](https://github.com/electron-userland/electron-builder) for use of "npm run dist")
+
+## Troubleshooting
+
+For now, no errors or issues have been reported.
+If you encounter anything please post it to the [issue tracker](https://github.com/masgui/masgui/issues)
 
 ## Built With
 
