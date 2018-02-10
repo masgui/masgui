@@ -10,8 +10,7 @@ This is a Miner which switches based on the current most profitable algorithm (c
 ## Getting Started
 
 Download the [latest Release](https://github.com/masgui/masgui/releases/latest) to get started quickly.
-Enter your Wallet Address and the corresponding Coin Symbol below that. (Coin Symbol will be changed to dropdown of available coins)
-Make sure to check the pool if it supports the coin you want to receive payouts in for now.
+Enter your Wallet Address and select the corresponding Coin symbol, thats it! :)
 
 ### Prerequisites
 
@@ -73,3 +72,4 @@ See also the list of [contributors](https://github.com/masgui/masgui/contributor
 
 * NemosMiner v2.4.2 (modified)
 * [DeathPosion](https://github.com/DeathPoison)
+* [Shields.io](https://shields.io/)
