@@ -4,6 +4,7 @@
 [![David-DM](https://david-dm.org/masgui/masgui.svg?style=flat-square)](https://david-dm.org/masgui/masgui)
 [![Github commits (since latest release)](https://img.shields.io/github/commits-since/masgui/masgui/latest.svg?style=flat-square)](https://github.com/masgui/masgui/commits/master)
 [![](https://img.shields.io/github/issues-raw/masgui/masgui.svg?style=flat-square)](https://github.com/masgui/masgui/issues)
+[![Github All Releases](https://img.shields.io/github/downloads/masgui/masgui/total.svg)]()
 
 This is a Miner which switches based on the current most profitable algorithm (checks every 5 minutes).
 
