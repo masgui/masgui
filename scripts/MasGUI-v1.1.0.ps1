@@ -10,41 +10,41 @@ param(
     [Parameter(Mandatory=$false)]
     [String]$API_Key = "",
     [Parameter(Mandatory=$false)]
-    [Int]$Interval = 30, #seconds before between cycles after the first has passed
+    [Int]$Interval = 150,
     [Parameter(Mandatory=$false)]
-    [Int]$FirstInterval = 30, #seconds of the first cycle of activated or started first time miner
+    [Int]$FirstInterval = 200,
     [Parameter(Mandatory=$false)]
-    [Int]$StatsInterval = 300, #seconds of current active to gather hashrate if not gathered yet
+    [Int]$StatsInterval = 250,
     [Parameter(Mandatory=$false)]
-    [String]$Location = "US", #europe/us/asia
+    [String]$Location = "US",
     [Parameter(Mandatory=$false)]
     [Switch]$SSL = $false,
     [Parameter(Mandatory=$false)]
-    [Array]$Type = "nvidia", #AMD/NVIDIA/CPU
+    [Array]$Type = "nvidia",
     [Parameter(Mandatory=$false)]
     [String]$SelGPUDSTM = "0 1",
     [Parameter(Mandatory=$false)]
     [String]$SelGPUCC = "0,1",
     [Parameter(Mandatory=$false)]
-    [Array]$Algorithm = $null, #i.e. Ethash,Equihash,Cryptonight ect.
+    [Array]$Algorithm = $null,
     [Parameter(Mandatory=$false)]
     [Array]$MinerName = $null,
     [Parameter(Mandatory=$false)]
     [Array]$PoolName = $null,
     [Parameter(Mandatory=$false)]
-    [Array]$Currency = ("USD"), #i.e. GBP,USD,AUD,NZD ect.
+    [Array]$Currency = ("USD"),
     [Parameter(Mandatory=$false)]
-    [Array]$Passwordcurrency = ("DGB"), #i.e. BTC,LTC,ZEC,ETH ect.
+    [Array]$Passwordcurrency = ("DGB"),
     [Parameter(Mandatory=$false)]
-    [Int]$Donate = 0, #Minutes per Day
+    [Int]$Donate = 0,
     [Parameter(Mandatory=$false)]
-    [String]$Proxy = "", #i.e http://192.0.0.1:8080
+    [String]$Proxy = "",
     [Parameter(Mandatory=$false)]
-    [Int]$Delay = 1, #seconds before opening each miner
+    [Int]$Delay = 1,
     [Parameter(Mandatory=$false)]
-    [Int]$ActiveMinerGainPct = 5, # percent of advantage that active miner has over candidates in term of profit
+    [Int]$ActiveMinerGainPct = 5,
     [Parameter(Mandatory=$false)]
-    [Float]$MarginOfError = 0.4 # knowledge about the past wont help us to predict the future so don't pretend that Week_Fluctuation means something real
+    [Float]$MarginOfError = 0.4
 )
 Set-Location (Split-Path $script:MyInvocation.MyCommand.Path)
 Get-ChildItem . -Recurse | Unblock-File
@@ -54,14 +54,11 @@ if($Proxy -eq ""){$PSDefaultParameterValues.Remove("*:Proxy")}
 else{$PSDefaultParameterValues["*:Proxy"] = $Proxy}
 . .\Include.ps1
 $DecayStart = Get-Date
-$DecayPeriod = 120 #seconds
-$DecayBase = 1-0.1 #decimal percentage
+$DecayPeriod = 120
+$DecayBase = 1-0.1
 $ActiveMinerPrograms = @()
-#Start the log
 Start-Transcript -Path ".\Logs\miner.log" -Append -Force
-#Update stats with missing data and set to today's date/time
 if(Test-Path "Stats"){Get-ChildItemContent "Stats" | ForEach {$Stat = Set-Stat $_.Name $_.Content.Week}}
-#Set donation parameters
 $LastDonated = (Get-Date).AddDays(-1).AddHours(1)
 $WalletDonate = "D6VmxuuEDDxY2uSkMLUVS4GGXTEP8Xwnxu"
 $UserNameDonate = "D6VmxuuEDDxY2uSkMLUVS4GGXTEP8Xwnxu"
@@ -74,7 +71,6 @@ $PasswordcurrencyBackup = $Passwordcurrency
 while($true)
 {
     $DecayExponent = [int](((Get-Date)-$DecayStart).TotalSeconds/$DecayPeriod)
-    #Activate or deactivate donation
     if((Get-Date).AddDays(-1).AddMinutes($Donate) -ge $LastDonated)
     {
         if ($Wallet) {$Wallet = $WalletDonate}
@@ -93,10 +89,8 @@ while($true)
     Write-host "Getting up-to-date BTC rates from Coinbase" -foregroundcolor "Green"
     $Rates = Invoke-RestMethod "https://api.coinbase.com/v2/exchange-rates?currency=BTC" -UseBasicParsing | Select-Object -ExpandProperty data | Select-Object -ExpandProperty rates
     $Currency | Where-Object {$Rates.$_} | ForEach-Object {$Rates | Add-Member $_ ([Double]$Rates.$_) -Force}
-    #Load the Stats
     $Stats = [PSCustomObject]@{}
     if(Test-Path "Stats"){Get-ChildItemContent "Stats" | ForEach {$Stats | Add-Member $_.Name $_.Content}}
-    #Load information about the Pools
     Write-host "Loading Pool Statistics..." -foregroundcolor "Green"
     $AllPools = if(Test-Path "Pools"){Get-ChildItemContent "Pools" | ForEach {$_.Content | Add-Member @{Name = $_.Name} -PassThru} |
         Where Location -EQ $Location |
@@ -107,8 +101,6 @@ while($true)
     $Pools_Comparison = [PSCustomObject]@{}
     $AllPools.Algorithm | Select -Unique | ForEach {$Pools | Add-Member $_ ($AllPools | Where Algorithm -EQ $_ | Sort Price -Descending | Select -First 1)}
     $AllPools.Algorithm | Select -Unique | ForEach {$Pools_Comparison | Add-Member $_ ($AllPools | Where Algorithm -EQ $_ | Sort StablePrice -Descending | Select -First 1)}
-    #Load information about the Miners
-    #Messy...?
     Write-host "Loading miners..." -foregroundcolor "Yellow"
     $Miners = if(Test-Path "Miners"){Get-ChildItemContent "Miners" | ForEach {$_.Content | Add-Member @{Name = $_.Name} -PassThru} |
         Where {$Type.Count -eq 0 -or (Compare $Type $_.Type -IncludeEqual -ExcludeDifferent | Measure).Count -gt 0} |
@@ -207,9 +199,7 @@ while($true)
         if($Miner_Devices -eq $null){$Miner_Devices = $Miner.Type}
         $Miner | Add-Member Device $Miner_Devices -Force
     }
-    #Don't penalize active miners. Miner could switch a little bit later and we will restore his bias in this case
     $ActiveMinerPrograms | Where { $_.Status -eq "Running" } | ForEach {$Miners | Where Path -EQ $_.Path | Where Arguments -EQ $_.Arguments | ForEach {$_.Profit_Bias = $_.Profit * (1 + $ActiveMinerGainPct / 100)}}
-    #Get most profitable miner combination i.e. AMD+NVIDIA+CPU
     $BestMiners = $Miners | Select Type,Index -Unique | ForEach {$Miner_GPU = $_; ($Miners | Where {(Compare $Miner_GPU.Type $_.Type | Measure).Count -eq 0 -and (Compare $Miner_GPU.Index $_.Index | Measure).Count -eq 0} | Sort -Descending {($_ | Where Profit -EQ $null | Measure).Count},{($_ | Measure Profit_Bias -Sum).Sum},{($_ | Where Profit -NE 0 | Measure).Count} | Select -First 1)}
     $BestDeviceMiners = $Miners | Select Device -Unique | ForEach {$Miner_GPU = $_; ($Miners | Where {(Compare $Miner_GPU.Device $_.Device | Measure).Count -eq 0} | Sort -Descending {($_ | Where Profit -EQ $null | Measure).Count},{($_ | Measure Profit_Bias -Sum).Sum},{($_ | Where Profit -NE 0 | Measure).Count} | Select -First 1)}
     $BestMiners_Comparison = $Miners | Select Type,Index -Unique | ForEach {$Miner_GPU = $_; ($Miners | Where {(Compare $Miner_GPU.Type $_.Type | Measure).Count -eq 0 -and (Compare $Miner_GPU.Index $_.Index | Measure).Count -eq 0} | Sort -Descending {($_ | Where Profit -EQ $null | Measure).Count},{($_ | Measure Profit_Comparison -Sum).Sum},{($_ | Where Profit -NE 0 | Measure).Count} | Select -First 1)}
@@ -223,7 +213,6 @@ while($true)
     $BestMiners_Combos_Comparison += $Miners_Device_Combos | ForEach {$Miner_Device_Combo = $_.Combination; [PSCustomObject]@{Combination = $Miner_Device_Combo | ForEach {$Miner_Device_Count = $_.Device.Count; [Regex]$Miner_Device_Regex = '^(' + (($_.Device | ForEach {[Regex]::Escape($_)}) -join '|') + ')$'; $BestDeviceMiners_Comparison | Where {([Array]$_.Device -notmatch $Miner_Device_Regex).Count -eq 0 -and ([Array]$_.Device -match $Miner_Device_Regex).Count -eq $Miner_Device_Count}}}}
     $BestMiners_Combo = $BestMiners_Combos | Sort -Descending {($_.Combination | Where Profit -EQ $null | Measure).Count},{($_.Combination | Measure Profit_Bias -Sum).Sum},{($_.Combination | Where Profit -NE 0 | Measure).Count} | Select -First 1 | Select -ExpandProperty Combination
     $BestMiners_Combo_Comparison = $BestMiners_Combos_Comparison | Sort -Descending {($_.Combination | Where Profit -EQ $null | Measure).Count},{($_.Combination | Measure Profit_Comparison -Sum).Sum},{($_.Combination | Where Profit -NE 0 | Measure).Count} | Select -First 1 | Select -ExpandProperty Combination
-    #Add the most profitable miners to the active list
     $BestMiners_Combo | ForEach {
         if(($ActiveMinerPrograms | Where Path -EQ $_.Path | Where Arguments -EQ $_.Arguments).Count -eq 0)
         {
@@ -246,8 +235,6 @@ while($true)
             }
         }
     }
-    #Stop or start miners in the active list depending on if they are the most profitable
-    # We have to stop processes first or the port would be busy
     $ActiveMinerPrograms | ForEach {
         [Array]$filtered = ($BestMiners_Combo | Where Path -EQ $_.Path | Where Arguments -EQ $_.Arguments)
         if($filtered.Count -eq 0)
@@ -261,13 +248,11 @@ while($true)
             $_.Active += (Get-Date)-$_.Process.StartTime
                $_.Process.CloseMainWindow() | Out-Null
                Sleep 1
-               # simply "Kill with power"
                Stop-Process $_.Process -Force | Out-Null
                Write-Host -ForegroundColor Yellow "closing current miner and switching"
                Sleep 1
                $_.Status = "Idle"
             }
-            #Restore Bias for non-active miners
             $Miners | Where Path -EQ $_.Path | Where Arguments -EQ $_.Arguments | ForEach {$_.Profit_Bias = $_.Profit_Bias_Orig}
         }
     }
@@ -281,7 +266,7 @@ while($true)
         {
             if($_.Process -eq $null -or $_.Process.HasExited -ne $false)
             {
-                Sleep $Delay #Wait to prevent BSOD
+                Sleep $Delay
                 $DecayStart = Get-Date
                 $_.New = $true
                 $_.Activated++
@@ -292,17 +277,14 @@ while($true)
                 else {
                     $_.Status = "Running"
                     $newMiner = $true
-                    #Newely started miner should looks better than other in the first run too
                     $Miners | Where Path -EQ $_.Path | Where Arguments -EQ $_.Arguments | ForEach {$_.Profit_Bias = $_.Profit * (1 + $ActiveMinerGainPct / 100)}
                     $newMiner = $true
-                    #Newely started miner should looks better than other in the first run too
                     $Miners | Where Path -EQ $_.Path | Where Arguments -EQ $_.Arguments | ForEach {$_.Profit_Bias = $_.Profit * (1 + $ActiveMinerGainPct / 100)}
                 }
             }
             $CurrentMinerHashrate_Gathered = $_.Hashrate_Gathered
         }
     }
-    #Display mining information
     Clear-Host
     [Array] $processesIdle = $ActiveMinerPrograms | Where { $_.Status -eq "Idle" }
     if ($processesIdle.Count -gt 0) {
@@ -326,7 +308,6 @@ while($true)
     @{Label = "BTC/GH/Day"; Expression={$_.Pools.PSObject.Properties.Value.Price | ForEach {($_*1000000000).ToString("N5")}}; Align='right'},
     @{Label = "Pool"; Expression={$_.Pools.PSObject.Properties.Value | ForEach {"$($_.Name)-$($_.Info)"}}}
     ) | Out-Host
-        #Display active miners list
     [Array] $processRunning = $ActiveMinerPrograms | Where { $_.Status -eq "Running" }
     Write-Host "Running:"
     $processRunning | Sort {if($_.Process -eq $null){[DateTime]0}else{$_.Process.StartTime}} | Select -First (1) | Format-Table -Wrap (
@@ -349,7 +330,6 @@ while($true)
     }
     Write-Host "--------------------------------------------------------------------------------"
     Write-Host -ForegroundColor Yellow "Last Refresh: $(Get-Date)"
-    #Do nothing for a few seconds as to not overload the APIs
     if ($newMiner -eq $true) {
         if ($Interval -ge $FirstInterval -and $Interval -ge $StatsInterval) { $timeToSleep = $Interval }
         else {
@@ -362,7 +342,6 @@ while($true)
     Write-Host "Sleep" $timeToSleep "sec"
     Sleep $timeToSleep
     Write-Host "--------------------------------------------------------------------------------"
-    #Display active miners list
     [Array] $processRunning = $ActiveMinerPrograms | Where { $_.Status -eq "Running" }
     Write-Host "Running:"
     $processRunning | Sort {if($_.Process -eq $null){[DateTime]0}else{$_.Process.StartTime}} | Select -First (1) | Format-Table -Wrap (
@@ -385,7 +364,6 @@ while($true)
     }
     Write-Host "--------------------------------------------------------------------------------"
     Write-Host -ForegroundColor Yellow "Last Refresh: $(Get-Date)"
-    #Do nothing for a few seconds as to not overload the APIs
     if ($newMiner -eq $true) {
         if ($Interval -ge $FirstInterval -and $Interval -ge $StatsInterval) { $timeToSleep = $Interval }
         else {
@@ -398,7 +376,6 @@ while($true)
     Write-Host "Sleep" $timeToSleep "sec"
     Sleep $timeToSleep
     Write-Host "--------------------------------------------------------------------------------"
-    #Save current hash rates
     $ActiveMinerPrograms | ForEach {
         if($_.Process -eq $null -or $_.Process.HasExited)
         {
@@ -406,7 +383,6 @@ while($true)
         }
         else
         {
-            # we don't want to store hashrates if we run less than $StatsInterval sec
             $WasActive = [math]::Round(((Get-Date)-$_.Process.StartTime).TotalSeconds)
             if ($WasActive -ge $StatsInterval) {
                 $_.HashRate = 0
@@ -427,18 +403,6 @@ while($true)
                 }
             }
         }
-        #Benchmark timeout
-#        if($_.Benchmarked -ge 6 -or ($_.Benchmarked -ge 2 -and $_.Activated -ge 2))
-#        {
-#            for($i = 0; $i -lt $_.Algorithms.Count; $i++)
-#            {
-#                if((Get-Stat "$($_.Name)_$($_.Algorithms | Select -Index $i)_HashRate") -eq $null)
-#                {
-#                    $Stat = Set-Stat -Name "$($_.Name)_$($_.Algorithms | Select -Index $i)_HashRate" -Value 0
-#                }
-#            }
-#        }
     }
 }
-#Stop the log
 Stop-Transcript

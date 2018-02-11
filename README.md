@@ -8,6 +8,16 @@
 
 This is a Miner which switches based on the current most profitable algorithm (checks every 5 minutes).
 
+## Latest additions
+
+### MasGUI v1.1.0
+
+Additons:
+* You can now select "All Pools" to switch automatically between all the pools (except Blazepool for now)
+* Added Website links beneath the pool select
+* Added more information beneath the pool select
+* Added Buttons for checking your current Profit (based on entered Wallet Address)
+
 ## Getting Started
 
 Download the [latest Release](https://github.com/masgui/masgui/releases/latest) to get started quickly.
@@ -15,7 +25,18 @@ Enter your Wallet Address and select the corresponding Coin symbol, thats it! :)
 
 ### Prerequisites
 
-No prerequisites.
+(Only download from trusted sources)
+
+On Windows 7, 8 or 8.1:
+* [Update Powershell](https://www.microsoft.com/en-us/download/details.aspx?id=50395)
+
+CCMiner may need:
+* [MSVCR120.dll](https://www.microsoft.com/en-gb/download/details.aspx?id=40784)
+* [VCRUNTIME140.DLL](https://www.microsoft.com/en-us/download/details.aspx?id=48145)
+
+Other requirements:
+* [Node.JS](https://nodejs.org/en/download/)
+
 
 ### Installing
 
