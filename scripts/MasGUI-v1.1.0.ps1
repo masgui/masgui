@@ -12,7 +12,11 @@ param(
     [Parameter(Mandatory=$false)]
     [Int]$Interval = 150,
     [Parameter(Mandatory=$false)]
+<<<<<<< HEAD:scripts/MasGUI-v1.0.1.ps1
+    [Int]$FirstInterval = 300, #seconds of the first cycle of activated or started first time miner
+=======
     [Int]$FirstInterval = 200,
+>>>>>>> 8d43701a1d44629a8f7fb4b5afcb31fb01ac0526:scripts/MasGUI-v1.1.0.ps1
     [Parameter(Mandatory=$false)]
     [Int]$StatsInterval = 250,
     [Parameter(Mandatory=$false)]
