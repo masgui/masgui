@@ -13,7 +13,7 @@
 
 <!-- Custom Title Bar  -->
 <div class="title-bar noselect">
-  <div class="title-bar-title"><a>MasGUI 1.1.0</a></div>
+  <div class="title-bar-title"><a>MasGUI 1.1.1</a></div>
   <div class="title-bar-btns">
     <button id="min-btn"><i class="fas fa-minus"></i></button>
     <button id="max-btn"><i class="far fa-square"></i></button>
@@ -42,24 +42,37 @@
                 {{ coin }}
               </option>
             </select>
-            <small class="form-text text-muted pool-help-text">If your Coin is not listed here, but you are sure that the coin is supported, then let me know on <a href="https://github.com/masgui/masgui/issues">GitHub</a></small>
+            <small class="form-text text-muted pool-help-text">
+              If your Coin is not listed here, but you are sure that the coin is supported, then let me know on
+              <a href="https://github.com/masgui/masgui/issues">GitHub</a>
+            </small>
           </div>
         </div>
 
         <!-- Inputs -->
-          <div v-for="inp in inputs" class="form-group has-danger">
-            <label :for="inp.value">{{ inp.name }}</label>
-            <input type="text" v-bind:class="{ 'is-invalid': missingName(inp) }" class="form-control form-control-lg input-class" :placeholder="inp.value" v-model="inp.value">
-            <small class="form-text text-muted help-text">{{ inp.help }}</small>
-            <div class="invalid-feedback">{{ inp.message }}</div>
-          </div>
+        <div v-for="inp in inputs" class="form-group has-danger">
+          <label :for="inp.value">{{ inp.name }}</label>
+          <input type="text"
+            v-bind:class="{ 'is-invalid': missingName(inp) }"
+            v-model="inp.value"
+            class="form-control form-control-lg input-class"
+            :placeholder="inp.value"
+          >
+          <small class="form-text text-muted help-text">{{ inp.help }}</small>
+          <div class="invalid-feedback">{{ inp.message }}</div>
+        </div>
 
 
         <!-- Select Pool -->
         <div id="selectDiv" class="form-group">
           <label :for="poolname">Pool:</label>
           <div class="form-control">
-            <select v-on:click="clearCheckedAlgos" class="custom-select" v-model="poolname" aria-describedby="poolname">
+            <select
+              v-on:click="clearCheckedAlgos"
+              class="custom-select"
+              v-model="poolname"
+              aria-describedby="poolname"
+            >
               <option disabled value="">
                 Please Select One
               </option>
@@ -67,10 +80,18 @@
                 {{ pool }}
               </option>
             </select>
-            <small v-if="!poolname" id="poolname" class="form-text text-muted pool-help-text">Select Pool to see algorithms<br /></small>
-            <small v-if="poolname && poolwebsites[poolname]">Check the pools <a href="" v-on:click="outputPoolUrl(poolname, false)">Website</a> for more information</small>
-            <small>It will run a Bechmark for never mined algorithms (for 250 seconds per algorithm)</small>
-            <small v-if="checkedAlgos == ''"><br>Select at least one algorithm to proceed</small>
+            <small v-if="!poolname" id="poolname" class="form-text text-muted pool-help-text">
+              Select Pool to see algorithms<br>
+            </small>
+            <small v-if="poolname && poolwebsites[poolname]">
+              Check the pools <a href="" v-on:click="outputPoolUrl(poolname, false)">Website</a> for more information
+            </small>
+            <small>
+              It will run a Bechmark for never mined algorithms (for 250 seconds per algorithm)
+            </small>
+            <small v-if="checkedAlgos == ''">
+              <br>Select at least one algorithm to proceed
+            </small>
           </div>
         </div>
 
@@ -80,7 +101,14 @@
         <div id="algoDiv" class="form-group row">
           <template v-for="algo in pools[preAlgo(poolname)]">
             <div class="custom-control custom-checkbox col col-md-3 col-sm-4">
-              <input class="custom-control-input" :id="algo" :name="algo" type="checkbox" v-bind:value="algo" v-model="checkedAlgos">
+              <input
+                v-model="checkedAlgos"
+                v-bind:value="algo"
+                class="custom-control-input"
+                type="checkbox"
+                :id="algo"
+                :name="algo"
+              >
               <label class="custom-control-label" :for="algo">{{ algo }}</label>
             </div>
           </template>
@@ -99,38 +127,81 @@
 
         <!-- Mining Button IF's -->
         <div class="form-group">
-          <p style="text-align:center;" v-if="startM && !showButton">You have to select your Wallet Coin Symbol, a Pool (or all Pools) and at least one algorithm to start mining</p>
-          <button v-if="showButton" v-on:click="switchAndStartMiner(Algos)" type="button" class="btn btn-primary btn-block">Start Mining</button>
-          <button v-if="!startM" v-on:click="switchAndStartMiner(__dirname.substring(0, __dirname.length - 9) + '\\stop.bat')" type="button" class="btn btn-primary btn-block">Stop & Close all Mining Windows</button>
-          <button v-if="!startM" v-on:click="executeCommand(__dirname.substring(0, __dirname.length - 9) + '\\restart.bat')" type="button" class="btn btn-primary btn-block">Restart Current Miner (incase of an error)</button>
+          <button
+            v-if="startM && !showButton"
+            class="btn btn-block btn-outline-primary"
+            disabled
+            style="text-align:center;font-size:0.9rem;"
+          >
+            You have to select your Wallet Coin Symbol, a Pool and at least one algorithm to start mining
+          </button>
+          <button
+            v-if="showButton"
+            type="button"
+            class="btn btn-primary btn-block"
+            v-on:click="switchAndStartMiner(Algos)"
+          >
+            Start Mining
+          </button>
+          <button
+            v-if="!startM"
+            class="btn btn-primary btn-block"
+            v-on:click="switchAndStartMiner(__dirname.substring(0, __dirname.length - 9) + '\\stop.bat')" type="button"
+          >
+            Stop & Close all Mining Windows
+          </button>
+          <button
+            v-if="!startM"
+            type="button"
+            class="btn btn-primary btn-block"
+            v-on:click="executeCommand(__dirname.substring(0, __dirname.length - 9) + '\\restart.bat')"
+          >
+            Restart Current Miner (incase of an error)
+          </button>
         </div>
 
+
+
+
+        <div class="row">
+          <label style="text-align:center;margin:auto;width:100%;" for="profitbuttons">
+            Check your current Profits <br>
+            (based on the WalletAddress entered above)
+          </label>
+          <template v-for="walletsites in poolnames">
+            <div id="profitbuttons" class="col col-sm-6 col-md-6">
+              <a
+                v-show="walletsites.toLowerCase() != 'all pools (switch automatically)'"
+                href=""
+                v-on:click="outputPoolUrl(walletsites.toLowerCase(), true)"
+                class="btn btn-success btn-block profit-a"
+              >
+                {{ walletsites }}
+              </a>
+            </div>
+          </template>
+        </div>
+        <br>
 
         <!-- Reset Benchmark & Profits -->
         <div class="row">
           <div class="reset-buttons col col-md-6">
-            <button v-on:click="executeCommand(__dirname.substring(0, __dirname.length - 9) + '\\resetbenchmark.bat')" class="btn btn-secondary btn-block">
+            <button
+              v-on:click="executeCommand(__dirname.substring(0, __dirname.length - 9) + '\\resetbenchmark.bat')"
+              class="btn btn-danger btn-block profit-a"
+            >
               Reset Benchmark Statistics
             </button>
           </div>
           <div class="reset-buttons col col-md-6">
-            <button v-on:click="executeCommand(__dirname.substring(0, __dirname.length - 9) + '\\resetprofit.bat')" class="btn btn-secondary btn-block">
+            <button
+              v-on:click="executeCommand(__dirname.substring(0, __dirname.length - 9) + '\\resetprofit.bat')"
+              class="btn btn-danger btn-block profit-a"
+            >
               Reset Profit Statistics
             </button>
           </div>
         </div>
-
-        <br>
-
-        <label style="text-align:center;" for="profitbuttons">Check your current Profits (based on the WalletAddress entered above)</label>
-        <div class="row">
-          <template v-for="walletsites in poolnames">
-            <div id="profitbuttons" class="col col-sm-6 col-md-6">
-              <a v-show="walletsites.toLowerCase() != 'all pools (switch automatically)'" href="" v-on:click="outputPoolUrl(walletsites.toLowerCase(), true)" class="btn btn-success btn-block">{{ walletsites }} Profit</a>
-            </div>
-          </template>
-        </div>
-
       </div>
     </div>
   </div>

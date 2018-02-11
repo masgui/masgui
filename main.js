@@ -10,10 +10,15 @@ const url = require('url')
 let mainWindow
 
 function createWindow() {
-  const {
+  let {
     width,
     height
   } = electron.screen.getPrimaryDisplay().workAreaSize
+
+  if (width <= 1700) {
+    width = 1700
+  }
+
   mainWindow = new BrowserWindow({
     width: width * .5,
     height: height * .9,

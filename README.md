@@ -10,10 +10,16 @@ This is a Miner which switches based on the current most profitable algorithm (c
 
 ## Latest additions
 
+### MasGui v1.1.1
+
+* ~~You can now select "All Pools" to switch automatically between all the pools (except Blazepool for now)~~
+* Pool switching has been removed for now as it seemed to be bugged
+
 ### MasGUI v1.1.0
 
 Additons:
-* You can now select "All Pools" to switch automatically between all the pools (except Blazepool for now)
+* ~~You can now select "All Pools" to switch automatically between all the pools (except Blazepool for now)~~
+* Pool switching has been removed for now as it seemed to be bugged
 * Added Website links beneath the pool select
 * Added more information beneath the pool select
 * Added Buttons for checking your current Profit (based on entered Wallet Address)

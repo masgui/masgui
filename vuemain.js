@@ -11,7 +11,6 @@ const vueapp = new Vue({
     ],
     coinsymbol: "",
     poolwebsites: {
-      allpools: "",
       ahashpool: "https://www.ahashpool.com/",
       blazepool: "http://blazepool.com/",
       hashrefinery: "http://pool.hashrefinery.com/",
@@ -22,12 +21,11 @@ const vueapp = new Vue({
       zpool: "http://www.zpool.ca/"
     },
     poolwalletwebsites: {
-      allpools: "",
       ahashpool: "https://www.ahashpool.com/wallet.php?wallet=",
       blazepool: "http://blazepool.com/wallet.html?btc=",
       hashrefinery: "http://pool.hashrefinery.com/?address=",
       minemoney: "https://www.minemoney.co/?address=",
-      miningpoolhub: "https://miningpoolhub.com/",
+      miningpoolhub: "https://miningpoolhub.com/index.php?page=login",
       nicehash: "https://www.nicehash.com/miner/",
       zergpool: "http://zergpool.com/?address=",
       zpool: "http://www.zpool.ca/?address="
@@ -40,8 +38,7 @@ const vueapp = new Vue({
       "Miningpoolhub",
       "Nicehash",
       "Zergpool",
-      "Zpool",
-      "All Pools (switch automatically)"
+      "Zpool"
     ],
     poolname: '',
     pools: {
