@@ -42,7 +42,8 @@ label {
 }
 
 .jumbotron {
-  margin: 3rem;
+  margin: 3rem 3rem 3rem 3rem;
+  padding: 1rem 2rem;
   border-radius: 20px;
   align-items: center;
 }
@@ -149,6 +150,7 @@ label {
 .custom-select {
   background-color: #a9bdbd !important;
   border: none !important;
+  text-align: center;
 }
 
 .custom-checkbox .custom-control-input ~ .custom-control-label::before {
