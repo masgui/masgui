@@ -57,7 +57,7 @@
         <div v-for="inp in inputs" class="form-group has-danger">
           <label :for="inp.value">{{ inp.name }}</label>
           <input type="text"
-            v-bind:class="{ 'is-invalid': missingName(inp) }"
+            v-bind:class="{ 'is-invalid': errorInInput(inp) }"
             v-model="inp.value"
             class="form-control form-control-lg input-class"
             :placeholder="inp.value"
@@ -67,7 +67,7 @@
         </div>
 
         <!-- Advanced Inputs -->
-        <div class="container">
+        <div class="container adv-inputs">
           <ul id="cbp-ntaccordion" class="cbp-ntaccordion">
             <li>
               <label class="cbp-nttrigger">Advanced Settings:</label>
@@ -75,7 +75,7 @@
                 <div v-for="advinp in advinputs" class="form-group has-danger">
                   <label :for="advinp.value">{{ advinp.name }}</label>
                   <input type="text"
-                  v-bind:class="{ 'is-invalid': missingName(advinp) }"
+                  v-bind:class="{ 'is-invalid': errorInInput(advinp) }"
                   v-model="advinp.value"
                   class="form-control form-control-lg input-class"
                   :placeholder="advinp.value"

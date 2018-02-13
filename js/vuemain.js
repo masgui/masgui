@@ -61,14 +61,14 @@ const vueapp = new Vue({
       },
       workerlogin: {
         name: "Worker Login:",
-        value: "doctororbit",
+        value: "workerlogin",
         help: "Only required for MiningPoolHub (You need to register there first)",
         message: ""
       },
       gpunum: {
         name: "GPU\'s:",
         value: "1",
-        help: "Number of GPU's that should run on this Software (Nvidia only for now)",
+        help: "Number of GPU's you want to use (Nvidia only for now)",
         message: ""
       }
     },
@@ -81,7 +81,7 @@ const vueapp = new Vue({
       },
       workername: {
         name: "Worker Name:",
-        value: "doctororbit",
+        value: "workername",
         help: "Can be whatever you like",
         message: ""
       },
@@ -94,7 +94,7 @@ const vueapp = new Vue({
       donate: {
         name: "Donate X minutes per Day:",
         value: "5",
-        help: "Number of minutes you want to donate per day",
+        help: "Number of minutes you want to donate per day ( 5min = 0,03$ if you have a 10$/day profit )",
         message: ""
       },
       gaimpact: {
@@ -140,23 +140,32 @@ const vueapp = new Vue({
       a.href = URL.createObjectURL(file)
       a.download = name
     },
-    missingName(inp) {
+    errorInInput(inp) {
+
       if (inp.value === '') {
         inp.message = "Cannot be empty"
         return true
-      } else if (inp.name == this.inputs.gpunum.name || inp.name == this.advinputs.donate.name || inp.name == this.advinputs.gaimpact.name) {
-        //if (!inp.value.match(/\d+/g)) {
+      }
+
+      if ( inp.name == this.inputs.gpunum.name
+        || inp.name == this.advinputs.donate.name
+        || inp.name == this.advinputs.gaimpact.name
+      ) {
         if (isNaN(inp.value)) {
           inp.message = "Has to be a number!"
           return true
         }
-      } else if (inp.name == this.advinputs.currency.name || inp.name == this.advinputs.location.name) {
-        //if (inp.value.match(/\d+/g)) {
+      }
+
+      if ( inp.name == this.advinputs.currency.name
+        || inp.name == this.advinputs.location.name) {
         if (!isNaN(inp.value)) {
           inp.message = "Has to be a text!"
           return true
         }
       }
+
+      return false
     },
     saveConfig() {
       var fs = require('fs')

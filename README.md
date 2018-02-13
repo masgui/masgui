@@ -101,7 +101,7 @@ See also the list of [contributors](https://github.com/masgui/masgui/contributor
 
 ## Donate
 
-* ETH: tba
+* ETH: 0x5D28b0038756EE67CAc6eF003507B9E36745f0cF
 * DGB: D6VmxuuEDDxY2uSkMLUVS4GGXTEP8Xwnxu
 
 ## Acknowledgments
