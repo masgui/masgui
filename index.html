@@ -157,25 +157,110 @@
         <div class="container adv-inputs">
           <ul id="cbp-ntaccordion" class="cbp-ntaccordion">
             <li>
-              <label class="cbp-nttrigger">Advanced Settings:</label>
+              <label class="cbp-nttrigger">More Settings:</label>
               <div class="cbp-ntcontent">
-                <div v-for="advinp in advinputs" class="form-group has-danger">
-                  <label :for="advinp.value">{{ advinp.name }}</label>
-                  <input type="text"
-                  v-bind:class="{ 'is-invalid': errorInInput(advinp) }"
-                  v-model="advinp.value"
-                  class="form-control form-control-lg input-class"
-                  :placeholder="advinp.value"
-                  >
-                  <small class="form-text text-muted help-text">{{ advinp.help }}</small>
-                  <div class="invalid-feedback">{{ advinp.message }}</div>
+                <ul class="cbp-ntsubaccordion">
+                  <li>
+                    <label class="cbp-nttrigger">Advanced Settings:</label>
+                    <div class="cbp-ntcontent">
+                      <div v-for="advinp in advinputs" class="form-group has-danger">
+                        <label :for="advinp.value">{{ advinp.name }}</label>
+                        <input type="text"
+                        v-bind:class="{ 'is-invalid': errorInInput(advinp) }"
+                        v-model="advinp.value"
+                        class="form-control form-control-lg input-class"
+                        :placeholder="advinp.value"
+                        >
+                        <small class="form-text text-muted help-text">{{ advinp.help }}</small>
+                        <div class="invalid-feedback">{{ advinp.message }}</div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+
+                <ul class="cbp-ntsubaccordion">
+                  <li>
+                    <label class="cbp-nttrigger">Check your current Profits:</label>
+                    <div class="cbp-ntcontent">
+                      <div class="row">
+                        <label style="text-align:center;margin:auto;width:100%;" for="profitbuttons">
+                          (based on the WalletAddress entered above)
+                        </label>
+                        <template v-for="walletsites in poolnames">
+                          <div id="profitbuttons" class="col col-sm-6 col-md-6">
+                            <a
+                            v-show="walletsites.toLowerCase() != 'all pools (switch automatically)'"
+                            href=""
+                            v-on:click="outputPoolUrl(walletsites.toLowerCase(), true)"
+                            class="btn btn-success btn-block profit-a"
+                            >
+                            {{ walletsites }}
+                          </a>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+              <ul class="cbp-ntsubaccordion">
+                <li>
+                  <label class="cbp-nttrigger">Save/Load Config:</label>
+                  <div class="cbp-ntcontent row">
+                    <div class="col">
+                      <button
+                      v-on:click="saveConfig()"
+                      class="btn btn-block btn-success profit-a"
+                      >
+                      Save Config
+                    </button>
+                  </div>
+                  <div class="col">
+                    <button
+                    v-on:click="loadConfig()"
+                    class="btn btn-block btn-success profit-a"
+                    >
+                    Load Config
+                  </button>
                 </div>
               </div>
             </li>
           </ul>
+
+          <ul class="cbp-ntsubaccordion">
+            <li>
+              <label class="cbp-nttrigger">Danger Area:</label>
+              <div class="cbp-ntcontent">
+                <div class="row">
+                  <div class="reset-buttons col col-md-6">
+                    <button
+                    v-on:click="executeCommand(__dirname.substring(0, __dirname.length - 9) + '\\resetbenchmark.bat')"
+                    class="btn btn-danger btn-block profit-a"
+                    >
+                    Reset Benchmark Statistics
+                  </button>
+                </div>
+                <div class="reset-buttons col col-md-6">
+                  <button
+                  v-on:click="executeCommand(__dirname.substring(0, __dirname.length - 9) + '\\resetprofit.bat')"
+                  class="btn btn-danger btn-block profit-a"
+                  >
+                  Reset Profit Statistics
+                </button>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+              </div>
+
+
+            </li>
+          </ul>
         </div>
 
-        <!-- Profit Buttons -->
+        <!-- Profit Buttons
         <div class="container adv-inputs">
           <ul id="cbp-ntaccordion3" class="cbp-ntaccordion">
             <li>
@@ -202,20 +287,41 @@
             </li>
           </ul>
         </div>
+      -->
 
         <br>
 
         <!--  not working just yet
-        <button v-on:click="saveConfig()" class="btn btn-block btn-success profit-a">
-          Save Config
-        </button>
+      -->
+        <!-- Config Area
+        <div class="container adv-inputs">
+          <ul id="cbp-ntaccordion4" class="cbp-ntaccordion">
+            <li>
+              <label class="cbp-nttrigger">Save/Load Config:</label>
+              <div class="cbp-ntcontent row">
+                <div class="col">
+                  <button
+                    v-on:click="saveConfig()"
+                    class="btn btn-block btn-success profit-a"
+                  >
+                    Save Config
+                  </button>
+                </div>
+                <div class="col">
+                  <button
+                    v-on:click="loadConfig()"
+                    class="btn btn-block btn-success profit-a"
+                  >
+                    Load Config
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      -->
 
-        <button v-on:click="loadConfig()" class="btn btn-block btn-success profit-a">
-          Load Config
-        </button>
-        -->
-
-        <!-- Reset Benchmark & Profits -->
+        <!-- Reset Benchmark & Profits
         <div class="container adv-inputs">
           <ul id="cbp-ntaccordion2" class="cbp-ntaccordion">
             <li>
@@ -243,6 +349,7 @@
             </li>
           </ul>
         </div>
+      -->
 
       </div>
     </div>
@@ -257,6 +364,7 @@
 			$('#cbp-ntaccordion').cbpNTAccordion();
       $('#cbp-ntaccordion2').cbpNTAccordion();
       $('#cbp-ntaccordion3').cbpNTAccordion();
+      $('#cbp-ntaccordion4').cbpNTAccordion();
 		});
 	</script>
   <script>
