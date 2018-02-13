@@ -2,7 +2,7 @@
   "name": "MasGUI",
   "version": "1.1.1",
   "description": "Multi Algorithm Switching GUI",
-  "main": "main.js",
+  "main": "js/main.js",
   "scripts": {
     "postinstall": "install-app-deps",
     "start": "electron .",

@@ -62,25 +62,39 @@ const vueapp = new Vue({
       workerlogin: {
         name: "Worker Login:",
         value: "doctororbit",
-        help: "Only required for MiningPoolHub (You need to register there first).",
-        message: ""
-      },
-      workername: {
-        name: "Worker Name:",
-        value: "doctororbit",
-        help: "Can be whatever you like.",
-        message: ""
-      },
-      password: {
-        name: "Password:",
-        value: "x",
-        help: "'x' is fine, but you can change it if you prefer.",
+        help: "Only required for MiningPoolHub (You need to register there first)",
         message: ""
       },
       gpunum: {
         name: "GPU\'s:",
         value: "1",
-        help: "Number of GPU's that should run on this Software (Nvidia only for now).",
+        help: "Number of GPU's that should run on this Software (Nvidia only for now)",
+        message: ""
+      }
+    },
+    advinputs: {
+      currency: {
+        name: "Preferred Currency for displaying Profits/Day:",
+        value: "USD",
+        help: "(GBP, USD, AUD, EUR)",
+        message: ""
+      },
+      workername: {
+        name: "Worker Name:",
+        value: "doctororbit",
+        help: "Can be whatever you like",
+        message: ""
+      },
+      location: {
+        name: "Location:",
+        value: "US",
+        help: "Closest location to you (i.e. Europe, Asia, US)",
+        message: ""
+      },
+      donate: {
+        name: "Donate X minutes per Day:",
+        value: "5",
+        help: "Number of minutes you want to donate per day",
         message: ""
       },
       gaimpact: {
@@ -88,29 +102,11 @@ const vueapp = new Vue({
         value: "3",
         help: "Switches to a more profitable algorithm once the difference is >= X%",
         message: ""
-      },
-      donate: {
-        name: "Donate X minutes per Day:",
-        value: "5",
-        help: "Number of minutes you want to donate per day (0 is not possible in Trial version)",
-        message: ""
-      },
-      currency: {
-        name: "Preferred Currency for displaying Profits/Day:",
-        value: "USD",
-        help: "(GBP, USD, AUD, EUR)",
-        message: ""
-      },
-      location: {
-        name: "Location:",
-        value: "US",
-        help: "Europe, Asia, US",
-        message: ""
       }
     }
   },
   methods: {
-    switchAndStartMiner(data){
+    switchAndStartMiner(data) {
       this.startM = !this.startM
       this.executeCommand(data)
     },
@@ -121,7 +117,7 @@ const vueapp = new Vue({
           detached: true
         })
 
-        console.log(data);
+      console.log(data)
 
 
       ls.stdout.on('data', function(data) {
@@ -148,19 +144,40 @@ const vueapp = new Vue({
       if (inp.value === '') {
         inp.message = "Cannot be empty"
         return true
-      } else if (inp.name == this.inputs.gpunum.name || inp.name == this.inputs.donate.name || inp.name == this.inputs.gaimpact.name) {
+      } else if (inp.name == this.inputs.gpunum.name || inp.name == this.advinputs.donate.name || inp.name == this.advinputs.gaimpact.name) {
         //if (!inp.value.match(/\d+/g)) {
         if (isNaN(inp.value)) {
           inp.message = "Has to be a number!"
           return true
         }
-      } else if (inp.name == this.inputs.currency.name || inp.name == this.inputs.location.name) {
+      } else if (inp.name == this.advinputs.currency.name || inp.name == this.advinputs.location.name) {
         //if (inp.value.match(/\d+/g)) {
         if (!isNaN(inp.value)) {
           inp.message = "Has to be a text!"
           return true
         }
       }
+    },
+    saveConfig() {
+      var fs = require('fs')
+      let allData = this.inputs
+      let allAdvData = this.advinputs
+      fs.writeFile("masguiadv.cfg", allAdvData, function(err) {
+        console.log(allAdvData);
+        if (err) {
+          return console.log(err)
+        }
+      })
+      fs.writeFile("masgui.cfg", allData, function(err) {
+        console.log(allData);
+        if (err) {
+          return console.log(err)
+        }
+      })
+    },
+    loadConfig() {
+      this.inputs = './masgui.cfg'
+      this.advinputs = './masguiadv.cfg'
     },
     clearCheckedAlgos() {
       this.checkedAlgos = []
@@ -175,7 +192,9 @@ const vueapp = new Vue({
       return data
     },
     outputPoolUrl(e, f) {
-      const {shell} = require('electron')
+      const {
+        shell
+      } = require('electron')
       if (f) {
         shell.openExternal(this.poolwalletwebsites[e] + this.inputs.walletadress.value)
       } else if (!f) {
@@ -203,7 +222,7 @@ const vueapp = new Vue({
       this.algolist = this.checkedAlgos.join()
 
       if (this.poolname.toLowerCase() == 'zpool') {
-        this.inputs.location.value = 'US'
+        this.advinputs.location.value = 'US'
       }
 
       if (this.poolname.toLowerCase() == 'blazepool') {
@@ -211,9 +230,11 @@ const vueapp = new Vue({
         this.inputs.walletadress.value = "3DYWArrdPYoEUzmfdxWGYh1cvdaozZm95q"
       }
 
-      if (this.inputs.donate.value <= 5) {
-        this.inputs.donate.value = 5
+      /* Removed Donating
+      if (this.advinputs.donate.value <= 5) {
+        this.advinputs.donate.value = 5
       }
+      */
 
       if (this.poolname.toLowerCase() == "all pools (switch automatically)") {
         this.poolname = "ahashpool,hashrefinery,minemoney,miningpoolhub,nicehash,zergpool,zpool"
@@ -230,13 +251,13 @@ const vueapp = new Vue({
         "-Passwordcurrency " + this.coinsymbol,
         "-Interval 30",
         "-Wallet " + this.inputs.walletadress.value,
-        "-Location " + this.inputs.location.value,
-        "-ActiveMinerGainPct " + this.inputs.gaimpact.value,
+        "-Location " + this.advinputs.location.value,
+        "-ActiveMinerGainPct " + this.advinputs.gaimpact.value,
         "-PoolName " + this.poolname.toLowerCase(),
         "-WorkerName " + this.inputs.workername.value,
         "-Type nvidia",
         "-Algorithm " + this.algolist,
-        "-Donate " + this.inputs.donate.value
+        "-Donate " + this.advinputs.donate.value
       ]
 
       this.command = this.command.join(' ')

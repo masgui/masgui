@@ -7,8 +7,11 @@
   <title>MasGUI</title>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+  <link rel="stylesheet" href="css/component.css">
+  <link rel="stylesheet" href="css/default.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/main.css">
+  <script src="js/modernizr.custom.js"></script>
 </head>
 
 <!-- Custom Title Bar  -->
@@ -29,6 +32,7 @@
       <div class="jumbotron">
 
         <img style="width: 100%; display: flex" src="img/header.png">
+
 
         <!-- Wallet Coin Symbol -->
         <div class="form-group">
@@ -60,6 +64,28 @@
           >
           <small class="form-text text-muted help-text">{{ inp.help }}</small>
           <div class="invalid-feedback">{{ inp.message }}</div>
+        </div>
+
+        <!-- Advanced Inputs -->
+        <div class="container">
+          <ul id="cbp-ntaccordion" class="cbp-ntaccordion">
+            <li>
+              <label class="cbp-nttrigger">Advanced Settings:</label>
+              <div class="cbp-ntcontent">
+                <div v-for="advinp in advinputs" class="form-group has-danger">
+                  <label :for="advinp.value">{{ advinp.name }}</label>
+                  <input type="text"
+                  v-bind:class="{ 'is-invalid': missingName(advinp) }"
+                  v-model="advinp.value"
+                  class="form-control form-control-lg input-class"
+                  :placeholder="advinp.value"
+                  >
+                  <small class="form-text text-muted help-text">{{ advinp.help }}</small>
+                  <div class="invalid-feedback">{{ advinp.message }}</div>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
 
 
@@ -113,17 +139,6 @@
             </div>
           </template>
         </div>
-
-        <!-- Algorithm Checkbox   BACKUP
-        <div id="algoDiv" class="form-group row">
-          <template v-for="algo in pools[poolname]">
-              <div class="custom-control custom-checkbox col col-md-3 col-sm-4">
-                  <input class="custom-control-input" :id="algo" :name="algo" type="checkbox" v-bind:value="algo" v-model="checkedAlgos">
-                  <label class="custom-control-label" :for="algo">{{ algo }}</label>
-              </div>
-          </template>
-        </div>
-        -->
 
         <!-- Mining Button IF's -->
         <div class="form-group">
@@ -183,6 +198,16 @@
         </div>
         <br>
 
+        <!--  not working just yet
+        <button v-on:click="saveConfig()" class="btn btn-block btn-success profit-a">
+          Save Config
+        </button>
+
+        <button v-on:click="loadConfig()" class="btn btn-block btn-success profit-a">
+          Load Config
+        </button>
+        -->
+
         <!-- Reset Benchmark & Profits -->
         <div class="row">
           <div class="reset-buttons col col-md-6">
@@ -206,9 +231,16 @@
     </div>
   </div>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="js/jquery.cbpNTAccordion.min.js"></script>
   <script>
-    require('./vuemain.js')
-    require('./titlebar.js')
+		$(function() {
+			$('#cbp-ntaccordion').cbpNTAccordion();
+		});
+	</script>
+  <script>
+    require('./js/vuemain.js')
+    require('./js/titlebar.js')
   </script>
 </body>
 

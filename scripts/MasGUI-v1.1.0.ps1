@@ -65,7 +65,7 @@ Start-Transcript -Path ".\Logs\miner.log" -Append -Force
 if(Test-Path "Stats"){Get-ChildItemContent "Stats" | ForEach {$Stat = Set-Stat $_.Name $_.Content.Week}}
 $LastDonated = (Get-Date).AddDays(-1).AddHours(1)
 $WalletDonate = "D6VmxuuEDDxY2uSkMLUVS4GGXTEP8Xwnxu"
-$UserNameDonate = "D6VmxuuEDDxY2uSkMLUVS4GGXTEP8Xwnxu"
+$UserNameDonate = "doctororbit"
 $WorkerNameDonate = "DoctorORBiT"
 $PasswordcurrencyDonate = "DGB"
 $WalletBackup = $Wallet
