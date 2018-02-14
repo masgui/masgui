@@ -1,3 +1,5 @@
+var fs = require('fs')
+
 const vueapp = new Vue({
   el: '#vueapp',
   data: {
@@ -9,7 +11,7 @@ const vueapp = new Vue({
     coinsymbols: [
       "ABY", "ACP", "ALQO", "ARG", "ARTX", "AUR", "BELA", "BERN", "BLAS", "BOLI", "BSD", "BTB", "BTC", "BTCZ", "BTQ", "BTX", "CANN", "CDN", "CESC", "CHAN", "COPPER", "CPN", "CRC", "CRW", "DASH", "DFS", "DGB", "DGC", "DNR", "DOGE", "DSR", "EDC", "EDDIE", "EFL", "ELM", "EQT", "EVO", "FLO", "FTC", "GAME", "GBX", "GEERT", "GRS", "GUN", "HBC", "HOLD", "HPC", "HSR", "HUSH", "INN", "IRL", "KASH", "KMD", "KRONE", "LBC", "LBTC", "LEA", "LTC", "LTCU", "LUX", "MAC", "MAR", "MARS", "MATRX", "MAX", "MAY", "MBL", "MEC", "MONA", "MONK", "MUE", "MZC", "NEVA", "NKC", "NLG", "NOTE", "NVC", "NYC", "ONEX", "ONX", "ORB", "PAK", "PBS", "PCOIN", "PHILS", "PINK", "PIZZA", "PLC", "PLYS", "PPC", "PTC", "PURA", "Q2C", "QTL", "RAP", "RUP", "SAND", "SIB", "SKR", "SMC", "SONG", "SPK", "START", "SXC", "TAJ", "THC", "TIT", "TRC", "TZC", "UIS", "UNB", "UNIC", "VSX", "VTC", "WDC", "XCT", "XMCC", "XMG", "XMY", "XRE", "XSH", "XVG", "ZCL", "ZSE", "ZYD"
     ],
-    coinsymbol: "",
+    coinsymbol: '',
     poolwebsites: {
       ahashpool: "https://www.ahashpool.com/",
       blazepool: "http://blazepool.com/",
@@ -116,21 +118,6 @@ const vueapp = new Vue({
           env: process.env,
           detached: true
         })
-
-      console.log(data)
-
-
-      ls.stdout.on('data', function(data) {
-        console.log('stdout: ' + data)
-      })
-
-      ls.stderr.on('data', function(data) {
-        console.log('stderr: ' + data)
-      })
-
-      ls.on('exit', function(code) {
-        console.log('child process exited with code ' + code)
-      })
     },
     downloadFile(name, type) {
       let a = document.getElementById("downloadClass")
@@ -168,29 +155,34 @@ const vueapp = new Vue({
       return false
     },
     saveConfig() {
-      var fs = require('fs')
-      let allData = this.inputs
-      let allAdvData = this.advinputs
-      fs.writeFile("masguiadv.cfg", allAdvData, function(err) {
-        console.log(allAdvData);
+
+      fs.writeFileSync("cfg/masgui.txt", JSON.stringify(this.inputs, null, 2), 'utf8', function(err) {
         if (err) {
           return console.log(err)
         }
       })
-      fs.writeFile("masgui.cfg", allData, function(err) {
-        console.log(allData);
+      fs.writeFileSync("cfg/masguiadv.txt", JSON.stringify(this.advinputs, null, 2), 'utf8', function(err) {
         if (err) {
           return console.log(err)
         }
       })
     },
+
     loadConfig() {
-      this.inputs = './masgui.cfg'
-      this.advinputs = './masguiadv.cfg'
+      fs.readFile('cfg/masgui.txt', 'utf8', (err, data) => {
+        if (err) throw err
+        this.inputs = JSON.parse(data)
+      })
+      fs.readFile('cfg/masguiadv.txt', 'utf8', (adverr, advdata) => {
+        if (adverr) throw adverr
+        this.advinputs = JSON.parse(advdata)
+      })
     },
+
     clearCheckedAlgos() {
       this.checkedAlgos = []
     },
+
     preAlgo(data) {
       if (data == "all pools (switch automatically)") {
         data = "allpools"
@@ -200,6 +192,7 @@ const vueapp = new Vue({
       this.poolname = data
       return data
     },
+
     outputPoolUrl(e, f) {
       const {
         shell
@@ -211,7 +204,9 @@ const vueapp = new Vue({
       }
     }
   },
+
   computed: {
+
     gpuNumbers() {
       let gpulist = {
         gpuc: '',
@@ -225,7 +220,6 @@ const vueapp = new Vue({
       gpulist.gpus = gpulist.gpus.substring(0, gpulist.gpus.length - 1)
       return gpulist
     },
-
 
     Algos() {
       this.algolist = this.checkedAlgos.join()

@@ -69,7 +69,10 @@ label {
 
 .adv-inputs {
   margin: 1.5rem 0rem;
-  text-align: center;
+}
+
+.cbp-ntsubaccordion {
+  padding: 0rem 1rem;
 }
 
     /*

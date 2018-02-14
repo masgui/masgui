@@ -24,7 +24,7 @@
 
 .cbp-ntaccordion .cbp-nttrigger {
 	cursor: pointer;
-} 
+}
 
 .cbp-ntaccordion h3 {
 	margin: 0 0 0.3em;
@@ -72,9 +72,6 @@
 	-webkit-font-smoothing: antialiased;
 }
 
-.cbp-ntaccordion > li > .cbp-nttrigger:before {
-	font-size: 75%;
-}
 
 .cbp-ntaccordion > li > .cbp-nttrigger:before {
 	content: "\36";
@@ -90,15 +87,15 @@
 }
 
 .cbp-ntsubaccordion > li > .cbp-nttrigger:before {
-	content: "\32";
+	content: "\36";
 }
 .cbp-ntsubaccordion > li > .cbp-nttrigger:hover:before {
-	content: "\33";
+	content: "\35";
 	color: inherit;
 }
 .cbp-ntsubaccordion > li.cbp-ntopen > .cbp-nttrigger:before,
 .no-js .cbp-ntsubaccordion > li > .cbp-nttrigger:before {
-	content: "\31";
+	content: "\34";
 	color: inherit;
 }
 
@@ -116,7 +113,7 @@
 }
 
 /* Example for media query */
-@media screen and (max-width: 32em) { 
+@media screen and (max-width: 32em) {
 
 	.cbp-ntaccordion {
 		font-size: 70%;

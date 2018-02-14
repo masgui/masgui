@@ -31,7 +31,7 @@
     <div class="container-fluid">
       <div class="jumbotron">
 
-        <img style="width: 100%; display: flex" src="img/header.png">
+        <img style="display: flex; margin: auto" src="img/header.png">
 
 
         <!-- Wallet Coin Symbol -->
@@ -56,12 +56,7 @@
         <!-- Inputs -->
         <div v-for="inp in inputs" class="form-group has-danger">
           <label :for="inp.value">{{ inp.name }}</label>
-          <input type="text"
-            v-bind:class="{ 'is-invalid': errorInInput(inp) }"
-            v-model="inp.value"
-            class="form-control form-control-lg input-class"
-            :placeholder="inp.value"
-          >
+          <input type="text" v-bind:class="{ 'is-invalid': errorInInput(inp) }" v-model="inp.value" class="form-control form-control-lg input-class" :placeholder="inp.value">
           <small class="form-text text-muted help-text">{{ inp.help }}</small>
           <div class="invalid-feedback">{{ inp.message }}</div>
         </div>
@@ -73,12 +68,7 @@
         <div id="selectDiv" class="form-group">
           <label :for="poolname">Pool:</label>
           <div class="form-control">
-            <select
-              v-on:click="clearCheckedAlgos"
-              class="custom-select"
-              v-model="poolname"
-              aria-describedby="poolname"
-            >
+            <select v-on:click="clearCheckedAlgos" class="custom-select" v-model="poolname" aria-describedby="poolname">
               <option disabled value="">
                 Please Select One
               </option>
@@ -120,35 +110,16 @@
 
         <!-- Mining Button IF's -->
         <div class="form-group">
-          <button
-            v-if="startM && !showButton"
-            class="btn btn-block btn-outline-primary"
-            disabled
-            style="text-align:center;font-size:0.9rem;"
-          >
+          <button v-if="startM && !showButton" class="btn btn-block btn-outline-primary" disabled style="text-align:center;font-size:0.9rem;">
             You have to select your Wallet Coin Symbol, a Pool and at least one algorithm to start mining
           </button>
-          <button
-            v-if="showButton"
-            type="button"
-            class="btn btn-primary btn-block"
-            v-on:click="switchAndStartMiner(Algos)"
-          >
+          <button v-if="showButton" type="button" class="btn btn-primary btn-block" v-on:click="switchAndStartMiner(Algos)">
             Start Mining
           </button>
-          <button
-            v-if="!startM"
-            class="btn btn-primary btn-block"
-            v-on:click="switchAndStartMiner(__dirname.substring(0, __dirname.length - 9) + '\\stop.bat')" type="button"
-          >
+          <button v-if="!startM" class="btn btn-primary btn-block" v-on:click="switchAndStartMiner(__dirname.substring(0, __dirname.length - 9) + '\\stop.bat')" type="button">
             Stop & Close all Mining Windows
           </button>
-          <button
-            v-if="!startM"
-            type="button"
-            class="btn btn-primary btn-block"
-            v-on:click="executeCommand(__dirname.substring(0, __dirname.length - 9) + '\\restart.bat')"
-          >
+          <button v-if="!startM" type="button" class="btn btn-primary btn-block" v-on:click="executeCommand(__dirname.substring(0, __dirname.length - 9) + '\\restart.bat')">
             Restart Current Miner (incase of an error)
           </button>
         </div>
@@ -165,12 +136,7 @@
                     <div class="cbp-ntcontent">
                       <div v-for="advinp in advinputs" class="form-group has-danger">
                         <label :for="advinp.value">{{ advinp.name }}</label>
-                        <input type="text"
-                        v-bind:class="{ 'is-invalid': errorInInput(advinp) }"
-                        v-model="advinp.value"
-                        class="form-control form-control-lg input-class"
-                        :placeholder="advinp.value"
-                        >
+                        <input type="text" v-bind:class="{ 'is-invalid': errorInInput(advinp) }" v-model="advinp.value" class="form-control form-control-lg input-class" :placeholder="advinp.value">
                         <small class="form-text text-muted help-text">{{ advinp.help }}</small>
                         <div class="invalid-feedback">{{ advinp.message }}</div>
                       </div>
@@ -198,60 +164,48 @@
                           </a>
                         </div>
                       </template>
+                      </div>
                     </div>
-                  </div>
-                </li>
-              </ul>
+                  </li>
+                </ul>
 
-              <ul class="cbp-ntsubaccordion">
-                <li>
-                  <label class="cbp-nttrigger">Save/Load Config:</label>
-                  <div class="cbp-ntcontent row">
-                    <div class="col">
-                      <button
-                      v-on:click="saveConfig()"
-                      class="btn btn-block btn-success profit-a"
-                      >
+                <ul class="cbp-ntsubaccordion">
+                  <li>
+                    <label class="cbp-nttrigger">Save/Load Config:</label>
+                    <div class="cbp-ntcontent row">
+                      <div class="col">
+                        <button v-on:click="saveConfig()" class="btn btn-block btn-success profit-a">
                       Save Config
                     </button>
-                  </div>
-                  <div class="col">
-                    <button
-                    v-on:click="loadConfig()"
-                    class="btn btn-block btn-success profit-a"
-                    >
+                      </div>
+                      <div class="col">
+                        <button v-on:click="loadConfig()" class="btn btn-block btn-success profit-a">
                     Load Config
                   </button>
-                </div>
-              </div>
-            </li>
-          </ul>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
 
-          <ul class="cbp-ntsubaccordion">
-            <li>
-              <label class="cbp-nttrigger">Danger Area:</label>
-              <div class="cbp-ntcontent">
-                <div class="row">
-                  <div class="reset-buttons col col-md-6">
-                    <button
-                    v-on:click="executeCommand(__dirname.substring(0, __dirname.length - 9) + '\\resetbenchmark.bat')"
-                    class="btn btn-danger btn-block profit-a"
-                    >
+                <ul class="cbp-ntsubaccordion">
+                  <li>
+                    <label class="cbp-nttrigger">Danger Area:</label>
+                    <div class="cbp-ntcontent">
+                      <div class="row">
+                        <div class="reset-buttons col col-md-6">
+                          <button v-on:click="executeCommand(__dirname.substring(0, __dirname.length - 9) + '\\resetbenchmark.bat')" class="btn btn-danger btn-block profit-a">
                     Reset Benchmark Statistics
                   </button>
-                </div>
-                <div class="reset-buttons col col-md-6">
-                  <button
-                  v-on:click="executeCommand(__dirname.substring(0, __dirname.length - 9) + '\\resetprofit.bat')"
-                  class="btn btn-danger btn-block profit-a"
-                  >
+                        </div>
+                        <div class="reset-buttons col col-md-6">
+                          <button v-on:click="executeCommand(__dirname.substring(0, __dirname.length - 9) + '\\resetprofit.bat')" class="btn btn-danger btn-block profit-a">
                   Reset Profit Statistics
                 </button>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
 
               </div>
 
@@ -358,15 +312,15 @@
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="js/jquery.cbpNTAccordion.min.js"></script>
+  <script src="js/jquery.cbpNTAccordion.min.js"></script>
   <script>
-		$(function() {
-			$('#cbp-ntaccordion').cbpNTAccordion();
+    $(function() {
+      $('#cbp-ntaccordion').cbpNTAccordion();
       $('#cbp-ntaccordion2').cbpNTAccordion();
       $('#cbp-ntaccordion3').cbpNTAccordion();
       $('#cbp-ntaccordion4').cbpNTAccordion();
-		});
-	</script>
+    });
+  </script>
   <script>
     require('./js/vuemain.js')
     require('./js/titlebar.js')
