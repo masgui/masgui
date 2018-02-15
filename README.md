@@ -10,7 +10,12 @@ This is a Miner which switches based on the current most profitable algorithm (c
 
 ## Latest additions
 
-### MasGui v1.1.1
+### MasGUI v1.2.0
+
+* Moved optional Settings to a seperate menu
+* Added a Saving a Loading Profile feature
+
+### MasGUI v1.1.1
 
 * ~~You can now select "All Pools" to switch automatically between all the pools (except Blazepool for now)~~
 * Pool switching has been removed for now as it seemed to be bugged
