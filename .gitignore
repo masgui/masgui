@@ -2,5 +2,4 @@ node_modules
 dist
 temp.lol
 img/logo.png
-cfg/masgui.txt
-cfg/masguiadv.txt
+cfg/*

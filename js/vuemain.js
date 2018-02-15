@@ -4,6 +4,7 @@ const vueapp = new Vue({
   el: '#vueapp',
   data: {
     startM: true,
+    saveName: '',
     gpulist: '',
     command: '',
     checkedAlgos: [],
@@ -156,12 +157,27 @@ const vueapp = new Vue({
     },
     saveConfig() {
 
-      fs.writeFileSync("cfg/masgui.txt", JSON.stringify(this.inputs, null, 2), 'utf8', function(err) {
+      fs.writeFileSync("cfg/" + this.saveName.toLowerCase() + "inp.txt", JSON.stringify(this.inputs, null, 2), 'utf8', function(err) {
         if (err) {
           return console.log(err)
         }
       })
-      fs.writeFileSync("cfg/masguiadv.txt", JSON.stringify(this.advinputs, null, 2), 'utf8', function(err) {
+      fs.writeFileSync("cfg/" + this.saveName.toLowerCase() + "adv.txt", JSON.stringify(this.advinputs, null, 2), 'utf8', function(err) {
+        if (err) {
+          return console.log(err)
+        }
+      })
+      fs.writeFileSync("cfg/" + this.saveName.toLowerCase() + "algo.txt", JSON.stringify(this.checkedAlgos, null, 2), 'utf8', function(err) {
+        if (err) {
+          return console.log(err)
+        }
+      })
+      fs.writeFileSync("cfg/" + this.saveName.toLowerCase() + "pool.txt", JSON.stringify(this.poolname, null, 2), 'utf8', function(err) {
+        if (err) {
+          return console.log(err)
+        }
+      })
+      fs.writeFileSync("cfg/" + this.saveName.toLowerCase() + "coin.txt", JSON.stringify(this.coinsymbol, null, 2), 'utf8', function(err) {
         if (err) {
           return console.log(err)
         }
@@ -169,14 +185,27 @@ const vueapp = new Vue({
     },
 
     loadConfig() {
-      fs.readFile('cfg/masgui.txt', 'utf8', (err, data) => {
+      fs.readFile("cfg/" + this.saveName.toLowerCase() + "inp.txt", "utf8", (err, inpdata) => {
         if (err) throw err
-        this.inputs = JSON.parse(data)
+        this.inputs = JSON.parse(inpdata)
       })
-      fs.readFile('cfg/masguiadv.txt', 'utf8', (adverr, advdata) => {
-        if (adverr) throw adverr
+      fs.readFile("cfg/" + this.saveName.toLowerCase() + "adv.txt", "utf8", (err, advdata) => {
+        if (err) throw err
         this.advinputs = JSON.parse(advdata)
       })
+      fs.readFile("cfg/" + this.saveName.toLowerCase() + "algo.txt", "utf8", (err, algodata) => {
+        if (err) throw err
+        this.checkedAlgos = JSON.parse(algodata)
+      })
+      fs.readFile("cfg/" + this.saveName.toLowerCase() + "pool.txt", "utf8", (err, pooldata) => {
+        if (err) throw err
+        this.poolname = JSON.parse(pooldata)
+      })
+      fs.readFile("cfg/" + this.saveName.toLowerCase() + "coin.txt", "utf8", (err, coindata) => {
+        if (err) throw err
+        this.coinsymbol = JSON.parse(coindata)
+      })
+
     },
 
     clearCheckedAlgos() {

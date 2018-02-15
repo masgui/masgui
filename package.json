@@ -51,12 +51,12 @@
   "author": "DoctorORBiT",
   "license": "CC0-1.0",
   "devDependencies": {
+    "devtron": "^1.4.0",
     "electron": "^1.8.2",
+    "electron-builder": "^19.55.3",
     "electron-prebuilt": "^1.4.13",
-    "electron-reload": "^1.2.2",
-    "electron-builder": "^19.55.3"
+    "electron-reload": "^1.2.2"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "optionalDependencies": {}
 }
