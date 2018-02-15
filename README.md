@@ -51,6 +51,8 @@ Other requirements:
 
 ### Installing
 
+Download the [latest Release](https://github.com/masgui/masgui/releases/latest) or:
+
 To build the app on your machine:
 
 
