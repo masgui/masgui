@@ -13,7 +13,7 @@ This is a Miner which switches based on the current most profitable algorithm (c
 ### MasGUI v1.2.0
 
 * Moved optional Settings to a seperate menu
-* Added a Saving a Loading Profile feature
+* Added a Saving and Loading Profile feature
 
 ### MasGUI v1.1.1
 
