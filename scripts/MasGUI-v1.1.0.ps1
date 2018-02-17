@@ -10,13 +10,9 @@ param(
     [Parameter(Mandatory=$false)]
     [String]$API_Key = "",
     [Parameter(Mandatory=$false)]
-    [Int]$Interval = 150,
+    [Int]$Interval = 30,
     [Parameter(Mandatory=$false)]
-<<<<<<< HEAD:scripts/MasGUI-v1.0.1.ps1
-    [Int]$FirstInterval = 300, #seconds of the first cycle of activated or started first time miner
-=======
-    [Int]$FirstInterval = 200,
->>>>>>> 8d43701a1d44629a8f7fb4b5afcb31fb01ac0526:scripts/MasGUI-v1.1.0.ps1
+    [Int]$FirstInterval = 150, #seconds of the first cycle of activated or started first time miner
     [Parameter(Mandatory=$false)]
     [Int]$StatsInterval = 250,
     [Parameter(Mandatory=$false)]
@@ -49,7 +45,12 @@ param(
     [Int]$ActiveMinerGainPct = 5,
     [Parameter(Mandatory=$false)]
     [Float]$MarginOfError = 0.4
+    [Parameter(Mandatory=$false)]
+    [String]$MPHApiKey = ""
 )
+
+$Version = "1.2.1"
+
 Set-Location (Split-Path $script:MyInvocation.MyCommand.Path)
 Get-ChildItem . -Recurse | Unblock-File
 Write-host "INFO: Adding MasGUI path to Windows Defender's exclusions.. (may show an error if Windows Defender is disabled)" -foregroundcolor "Yellow"
@@ -71,18 +72,21 @@ $PasswordcurrencyDonate = "DGB"
 $WalletBackup = $Wallet
 $UserNameBackup = $UserName
 $WorkerNameBackup = $WorkerName
+#Randomly sets donation minutes per day between 0 - 3 minutes if not set
 $PasswordcurrencyBackup = $Passwordcurrency
+If ($Donate -lt 1) {$Donate = Get-Random -Maximum 3}
 while($true)
 {
     $DecayExponent = [int](((Get-Date)-$DecayStart).TotalSeconds/$DecayPeriod)
-    if((Get-Date).AddDays(-1).AddMinutes($Donate) -ge $LastDonated)
+    #Activate or deactivate donation
+    if((Get-Date).AddDays(-1).AddMinutes($Donate) -ge $LastDonated -and ($Wallet -eq $WalletBackup -or $UserName -eq $UserNameBackup))
     {
         if ($Wallet) {$Wallet = $WalletDonate}
         if ($UserName) {$UserName = $UserNameDonate}
         if ($WorkerName) {$WorkerName = $WorkerNameDonate}
         if ($Passwordcurrency) {$Passwordcurrency = $PasswordcurrencyDonate}
     }
-    if((Get-Date).AddDays(-1) -ge $LastDonated)
+    if((Get-Date).AddDays(-1) -ge $LastDonated -and ($Wallet -ne $WalletBackup -or $UserName -ne $UserNameBackup))
     {
         $Wallet = $WalletBackup
         $UserName = $UserNameBackup
@@ -270,6 +274,24 @@ while($true)
         {
             if($_.Process -eq $null -or $_.Process.HasExited -ne $false)
             {
+ 		# Log switching information to .\log\swicthing.log
+		[pscustomobject]@{date=(get-date);algo=$_.Algorithms;wallet=$Wallet;username=$UserName} | export-csv .\Logs\switching.log -Append -NoTypeInformation
+
+ 		# Launch prerun if exists
+		$PrerunName = ".\Prerun\"+$_.Algorithms+".bat"
+		$DefaultPrerunName = ".\Prerun\default.bat"
+                If (Test-Path $PrerunName) {
+			Write-Host -F Yellow "Launching Prerun: " $PrerunName
+			Start-Process $PrerunName -WorkingDirectory ".\Prerun"
+			Sleep 2
+		} else {
+			If (Test-Path $DefaultPrerunName) {
+				Write-Host -F Yellow "Launching Prerun: " $DefaultPrerunName
+				Start-Process $DefaultPrerunName -WorkingDirectory ".\Prerun"
+				Sleep 2
+				}
+		}
+
                 Sleep $Delay
                 $DecayStart = Get-Date
                 $_.New = $true
@@ -301,6 +323,7 @@ while($true)
             @{Label = "Command"; Expression={"$($_.Path.TrimStart((Convert-Path ".\"))) $($_.Arguments)"}}
         ) | Out-Host
     }
+    Clear-Host
     Write-Host "1 BTC = " $Rates.$Currency "$Currency"
     $Miners | Sort -Descending Type,Profit | Format-Table -GroupBy Type (
     @{Label = "Miner"; Expression={$_.Name}},
@@ -325,7 +348,7 @@ while($true)
     if ($processesFailed.Count -gt 0) {
         Write-Host -ForegroundColor Red "Failed: " $processesFailed.Count
         $processesFailed | Sort {if($_.Process -eq $null){[DateTime]0}else{$_.Process.StartTime}} | Format-Table -Wrap (
-            @{Label = "Speed"; Expression={$_.HashRate | ForEach {"$($_ | ConvertTo-Hash)/s"}}; Align='right'},
+            @{Label = "Speed"; Expression={$_.HashRate | ForEach {"$($_ | ConvertTo-Hash)/s"}}; Align='right'}, 
             @{Label = "Exited"; Expression={"{0:dd}:{0:hh}:{0:mm}" -f $(if($_.Process -eq $null){(0)}else{(Get-Date) - $_.Process.ExitTime}) }},
             @{Label = "Active"; Expression={"{0:dd}:{0:hh}:{0:mm}" -f $(if($_.Process -eq $null){$_.Active}else{if($_.Process.ExitTime -gt $_.Process.StartTime){($_.Active+($_.Process.ExitTime-$_.Process.StartTime))}else{($_.Active+((Get-Date)-$_.Process.StartTime))}})}},
             @{Label = "Cnt"; Expression={Switch($_.Activated){0 {"Never"} 1 {"Once"} Default {"$_"}}}},

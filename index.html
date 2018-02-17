@@ -135,7 +135,7 @@
                     <!-- Advanced Settings -->
                     <label class="cbp-nttrigger">Advanced Settings:</label>
                     <div class="cbp-ntcontent">
-                      <div v-for="advinp in advinputs" class="form-group has-danger">
+                      <div v-for="advinp in advinputs" class="form-group has-danger" style="margin:1rem 0rem;">
                         <label :for="advinp.value">{{ advinp.name }}</label>
                         <input type="text" v-bind:class="{ 'is-invalid': errorInInput(advinp) }" v-model="advinp.value" class="form-control form-control-lg input-class" :placeholder="advinp.value">
                         <small class="form-text text-muted help-text">{{ advinp.help }}</small>
@@ -150,7 +150,7 @@
                     <!-- Profits -->
                     <label class="cbp-nttrigger">Check your current Profits:</label>
                     <div class="cbp-ntcontent">
-                      <div class="row">
+                      <div class="row" style="margin:1rem 0rem;">
                         <label style="text-align:center;margin:auto;width:100%;" for="profitbuttons">
                           (based on the WalletAddress entered above)
                         </label>
@@ -173,11 +173,37 @@
 
                 <ul class="cbp-ntsubaccordion">
                   <li>
+                    <!-- Prerun Bat -->
+                    <label class="cbp-nttrigger">Manage Prerun.bat's:</label>
+                    <div class="cbp-ntcontent">
+                      <div class="row" style="margin-top:1rem;">
+                        <small style="text-align:center;margin:auto;width:100%;">
+                          for more information about the prerun, check our Github page
+                        </small>
+                        <div class="form-group row" style="margin-bottom:1rem;">
+                          <div v-for="pre in prerunobj" class="col col-md-4">
+                            <label>{{ pre.name }}</label>
+                            <input type="text" v-model="pre.value" class="form-control form-control-lg input-class" :placeholder="pre.value">
+                          </div>
+                        </div>
+                          <button style="margin-bottom:1rem;" v-on:click="createPrerunFile()" class="btn btn-block btn-success profit-a">
+                            Create Prerun
+                          </button>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+
+                <!-- REM nvidiaInspector.exe -setBaseClockOffset:0,0,75 -setMemoryClockOffset:0,0,505 -setVoltageOffset:0,0,0 -setPowerTarget:0,75 -setTempTarget:0,0,90 -->
+
+
+                <ul class="cbp-ntsubaccordion">
+                  <li>
                     <!-- Save & Load Config -->
                     <label class="cbp-nttrigger">Save & Load Config:</label>
                     <div class="cbp-ntcontent">
 
-                      <div class="row">
+                      <div class="row" style="margin-top:1rem;">
                         <div class="col">
                           <div class="form-group">
                             <label>Enter Name of Profile to Save or Load:</label>
@@ -186,7 +212,7 @@
                         </div>
                       </div>
 
-                      <div class="row">
+                      <div class="row" style="margin-bottom:1rem;">
                         <div class="col">
                           <button v-on:click="saveConfig()" class="btn btn-block btn-success profit-a">
                             Save Config
