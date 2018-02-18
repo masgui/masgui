@@ -75,8 +75,7 @@ label {
   padding: 0rem 1rem;
 }
 
-.subcontent {
-}
+
 
     /*
      *      Title Bar
@@ -100,7 +99,7 @@ label {
   height: 32px;
   width: 100%;
   padding-top: 5px;
-  background-color: #073642;
+  background-color: #495059;
   background-attachment: fixed;
   color: #f1f1f1;
 }
@@ -155,13 +154,15 @@ label {
   background-color: #222;
 }
 .scrollbar::-webkit-scrollbar-thumb {
-  background-color: #073642;
+  background-color: #495059;
 }
 
 .custom-select {
-  background-color: #a9bdbd !important;
   border: none !important;
   text-align: center;
+  font-size: 16px;
+  background-color: #272b30 !important;
+  color: rgb(169, 189, 189);
 }
 
 .custom-checkbox .custom-control-input ~ .custom-control-label::before {
@@ -169,15 +170,16 @@ label {
 }
 
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: #B58900;
+  /* background-color: #B58900; */
 }
 
 /*
  *    Custom Inputs
  */
 .form-control {
-  border-radius: 0.5rem;
-  color: rgb(7, 11, 22);
+  border: none !important;
+  color: rgb(169, 189, 189);
+  background-color: #272b30;
 }
 
 .form-control:focus {
@@ -186,11 +188,6 @@ label {
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
 }
 
-.custom-select {
-  border-radius: 0.5rem;
-  font-size: 16px;
-  color: rgb(7, 11, 22);
-}
 
 .custom-select:focus {
   border-color: #B58900;
@@ -198,9 +195,6 @@ label {
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
 }
 
-.pool-help-text {
-  color: #284346 !important;
-}
 .help-text {
   color: #6c979c !important;
 }

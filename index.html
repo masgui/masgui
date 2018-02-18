@@ -9,7 +9,8 @@
   <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
   <link rel="stylesheet" href="css/component.css">
   <link rel="stylesheet" href="css/default.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.css">
   <link rel="stylesheet" href="css/main.css">
   <script src="js/modernizr.custom.js"></script>
 </head>
@@ -46,7 +47,7 @@
                 {{ coin }}
               </option>
             </select>
-            <small class="form-text text-muted pool-help-text">
+            <small class="form-text text-muted help-text">
               If your Coin is not listed here, but you are sure that the coin is supported, then let me know on
               <a href="https://github.com/masgui/masgui/issues">GitHub</a>
             </small>
@@ -56,7 +57,7 @@
         <!-- Inputs -->
         <div v-for="inp in inputs" class="form-group has-danger">
           <label :for="inp.value">{{ inp.name }}</label>
-          <input type="text" v-bind:class="{ 'is-invalid': errorInInput(inp) }" v-model="inp.value" class="form-control form-control-lg input-class" :placeholder="inp.value">
+          <input type="text" v-bind:class="{ 'is-invalid': errorInInput(inp) }" v-model="inp.value" class="form-control input-class" :placeholder="inp.value">
           <small class="form-text text-muted help-text">{{ inp.help }}</small>
           <div class="invalid-feedback">{{ inp.message }}</div>
         </div>
@@ -76,7 +77,7 @@
                 {{ pool }}
               </option>
             </select>
-            <small v-if="!poolname" id="poolname" class="form-text text-muted pool-help-text">
+            <small v-if="!poolname" id="poolname" class="form-text text-muted help-text">
               Select Pool to see algorithms
             </small>
             <small v-if="poolname && poolwebsites[poolname]">
@@ -110,7 +111,7 @@
 
         <!-- Mining Button IF's -->
         <div class="form-group">
-          <button v-if="startM && !showButton" class="btn btn-block btn-outline-primary" disabled style="text-align:center;font-size:0.9rem;">
+          <button v-if="startM && !showButton" class="btn btn-block btn-outline-primary" style="text-align:center;font-size:0.9rem;">
             You have to select your Wallet Coin Symbol, a Pool and at least one algorithm to start mining
           </button>
           <button v-if="showButton" type="button" class="btn btn-primary btn-block" v-on:click="switchAndStartMiner(Algos)">
@@ -151,9 +152,9 @@
                     <label class="cbp-nttrigger">Check your current Profits:</label>
                     <div class="cbp-ntcontent">
                       <div class="row" style="margin:1rem 0rem;">
-                        <label style="text-align:center;margin:auto;width:100%;" for="profitbuttons">
+                        <small style="text-align:center;margin:auto;width:100%;" for="profitbuttons">
                           (based on the WalletAddress entered above)
-                        </label>
+                        </small>
                         <template v-for="walletsites in poolnames">
                           <div id="profitbuttons" class="col col-sm-6 col-md-6">
                             <a
