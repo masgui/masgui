@@ -1,4 +1,6 @@
-<div style="display: flex; margin: auto"><img src="img/header.png" /></div
+<p align="center">
+  <img src="img/header.png">
+</p>
 
 [![GitHub release](https://img.shields.io/github/release/masgui/masgui.svg?style=flat-square)](https://github.com/masgui/masgui/releases/latest)
 [![David-DM](https://david-dm.org/masgui/masgui.svg?style=flat-square)](https://david-dm.org/masgui/masgui)
