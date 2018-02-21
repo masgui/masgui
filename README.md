@@ -10,7 +10,12 @@
 
 This is a Miner which switches based on the current most profitable algorithm (checks every 5 minutes).
 
-## Latest additions
+## Changelog
+
+### MasGUI v1.2.1
+
+* Updated UI
+* Added Prerun.bat creation
 
 ### MasGUI v1.2.0
 
