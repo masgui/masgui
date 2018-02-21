@@ -44,7 +44,7 @@ param(
     [Parameter(Mandatory=$false)]
     [Int]$ActiveMinerGainPct = 5,
     [Parameter(Mandatory=$false)]
-    [Float]$MarginOfError = 0.4
+    [Float]$MarginOfError = 0.4,
     [Parameter(Mandatory=$false)]
     [String]$MPHApiKey = ""
 )

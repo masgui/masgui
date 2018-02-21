@@ -1,6 +1,6 @@
 {
   "name": "MasGUI",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Multi Algorithm Switching GUI",
   "main": "js/main.js",
   "scripts": {

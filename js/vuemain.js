@@ -3,6 +3,7 @@
 /*eslint no-undef: */
 
 var fs = require('fs')
+let location = __dirname.substring(0, __dirname.length - 11)
 
 const vueapp = new Vue({
     el: '#vueapp',
@@ -192,27 +193,28 @@ const vueapp = new Vue({
         },
 
         saveConfig() {
-            fs.writeFileSync('cfg/' + this.saveName.toLowerCase() + 'inp.txt', JSON.stringify(this.inputs, null, 2), 'utf8', function(err) {
+
+            fs.writeFile(location + 'cfg/' + this.saveName.toLowerCase() + 'inp.txt', JSON.stringify(this.inputs, null, 2), 'utf8', function(err) {
                 if (err) {
                     throw err
                 }
             })
-            fs.writeFileSync('cfg/' + this.saveName.toLowerCase() + 'adv.txt', JSON.stringify(this.advinputs, null, 2), 'utf8', function(err) {
+            fs.writeFile(location + 'cfg/' + this.saveName.toLowerCase() + 'adv.txt', JSON.stringify(this.advinputs, null, 2), 'utf8', function(err) {
                 if (err) {
                     throw err
                 }
             })
-            fs.writeFileSync('cfg/' + this.saveName.toLowerCase() + 'algo.txt', JSON.stringify(this.checkedAlgos, null, 2), 'utf8', function(err) {
+            fs.writeFile(location + 'cfg/' + this.saveName.toLowerCase() + 'algo.txt', JSON.stringify(this.checkedAlgos, null, 2), 'utf8', function(err) {
                 if (err) {
                     throw err
                 }
             })
-            fs.writeFileSync('cfg/' + this.saveName.toLowerCase() + 'pool.txt', JSON.stringify(this.poolname, null, 2), 'utf8', function(err) {
+            fs.writeFile(location + 'cfg/' + this.saveName.toLowerCase() + 'pool.txt', JSON.stringify(this.poolname, null, 2), 'utf8', function(err) {
                 if (err) {
                     throw err
                 }
             })
-            fs.writeFileSync('cfg/' + this.saveName.toLowerCase() + 'coin.txt', JSON.stringify(this.coinsymbol, null, 2), 'utf8', function(err) {
+            fs.writeFile(location + 'cfg/' + this.saveName.toLowerCase() + 'coin.txt', JSON.stringify(this.coinsymbol, null, 2), 'utf8', function(err) {
                 if (err) {
                     throw err
                 }
@@ -220,23 +222,24 @@ const vueapp = new Vue({
         },
 
         loadConfig() {
-            fs.readFile('cfg/' + this.saveName.toLowerCase() + 'inp.txt', 'utf8', (err, inpdata) => {
+            let location = __dirname.substring(0, __dirname.length - 11)
+            fs.readFile(location + 'cfg/' + this.saveName.toLowerCase() + 'inp.txt', 'utf8', (err, inpdata) => {
                 if (err) throw err
                 this.inputs = JSON.parse(inpdata)
             })
-            fs.readFile('cfg/' + this.saveName.toLowerCase() + 'adv.txt', 'utf8', (err, advdata) => {
+            fs.readFile(location + 'cfg/' + this.saveName.toLowerCase() + 'adv.txt', 'utf8', (err, advdata) => {
                 if (err) throw err
                 this.advinputs = JSON.parse(advdata)
             })
-            fs.readFile('cfg/' + this.saveName.toLowerCase() + 'algo.txt', 'utf8', (err, algodata) => {
+            fs.readFile(location + 'cfg/' + this.saveName.toLowerCase() + 'algo.txt', 'utf8', (err, algodata) => {
                 if (err) throw err
                 this.checkedAlgos = JSON.parse(algodata)
             })
-            fs.readFile('cfg/' + this.saveName.toLowerCase() + 'pool.txt', 'utf8', (err, pooldata) => {
+            fs.readFile(location + 'cfg/' + this.saveName.toLowerCase() + 'pool.txt', 'utf8', (err, pooldata) => {
                 if (err) throw err
                 this.poolname = JSON.parse(pooldata)
             })
-            fs.readFile('cfg/' + this.saveName.toLowerCase() + 'coin.txt', 'utf8', (err, coindata) => {
+            fs.readFile(location + 'cfg/' + this.saveName.toLowerCase() + 'coin.txt', 'utf8', (err, coindata) => {
                 if (err) throw err
                 this.coinsymbol = JSON.parse(coindata)
             })
@@ -245,7 +248,7 @@ const vueapp = new Vue({
         createPrerunFile() {
             var prerunFilename = 'nvidiaInspector.exe -setBaseClockOffset:' + this.prerunobj.baseclock.value + ' -setMemoryClockOffset:' + this.prerunobj.memoryclock.value + ' -setVoltageOffset:' + this.prerunobj.voltageoffset.value + ' -setPowerTarget:' + this.prerunobj.powertarget.value + ' -setTempTarget:' + this.prerunobj.temptarget.value
 
-            fs.writeFileSync('scripts/prerun/' + this.prerunobj.prerunalgo.value.toLowerCase() + '.bat', prerunFilename, 'utf8', function(err) {
+            fs.writeFile('scripts/prerun/' + this.prerunobj.prerunalgo.value.toLowerCase() + '.bat', prerunFilename, 'utf8', function(err) {
                 if (err) {
                     throw err
                 }
@@ -316,21 +319,23 @@ const vueapp = new Vue({
                 this.poolname = 'ahashpool,hashrefinery,minemoney,miningpoolhub,nicehash,zergpool,zpool'
             }
 
-            let location = __dirname.substring(0, __dirname.length - 9)
+            /*
+            let location = __dirname.substring(0, __dirname.length - 11)
+            */
 
             this.command = [
                 'powershell -version 5.0 -noexit -executionpolicy bypass -windowstyle maximized -command',
                 location + '\\MasGUI-v1.1.0.ps1',
                 '-SelGPUDSTM "' + this.gpuNumbers.gpus + '"',
                 '-SelGPUCC "' + this.gpuNumbers.gpuc + '"',
-                '-Currency ' + this.inputs.currency.value,
+                '-Currency ' + this.advinputs.currency.value,
                 '-Passwordcurrency ' + this.coinsymbol,
                 '-Interval 30',
                 '-Wallet ' + this.inputs.walletadress.value,
                 '-Location ' + this.advinputs.location.value,
                 '-ActiveMinerGainPct ' + this.advinputs.gaimpact.value,
                 '-PoolName ' + this.poolname.toLowerCase(),
-                '-WorkerName ' + this.inputs.workername.value,
+                '-WorkerName ' + this.advinputs.workername.value,
                 '-Type nvidia',
                 '-Algorithm ' + this.algolist,
                 '-Donate ' + this.advinputs.donate.value,
