@@ -19,6 +19,6 @@ $Commands | Get-Member -MemberType NoteProperty | Select -ExpandProperty Name | 
         API = "XMRig"
         Port = $Port
         Wrap = $false
-        URI = $Uri    
+        URI = $Uri
     }
 }

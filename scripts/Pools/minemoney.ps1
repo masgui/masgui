@@ -17,7 +17,7 @@ $MineMoney_Request | Get-Member -MemberType NoteProperty | Select -ExpandPropert
     $MineMoney_Coin = ""
 
     $Divisor = 1000000
-	
+
     switch ($MineMoney_Algorithm) {
         "blake2s" {$Divisor *= 1000}
 	"blakecoin" {$Divisor *= 1000}
@@ -27,7 +27,7 @@ $MineMoney_Request | Get-Member -MemberType NoteProperty | Select -ExpandPropert
 
     if((Get-Stat -Name "$($Name)_$($MineMoney_Algorithm)_Profit") -eq $null){$Stat = Set-Stat -Name "$($Name)_$($MineMoney_Algorithm)_Profit" -Value ([Double]$MineMoney_Request.$_.estimate_last24h/$Divisor *(1-($MineMoney_Request.$_.fees/100)))}
     else{$Stat = Set-Stat -Name "$($Name)_$($MineMoney_Algorithm)_Profit" -Value ([Double]$MineMoney_Request.$_.estimate_current/$Divisor *(1-($MineMoney_Request.$_.fees/100)))}
-	
+
     if($Wallet)
     {
         [PSCustomObject]@{

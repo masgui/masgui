@@ -35,7 +35,7 @@ set log_file=mining_problems_log.txt
 set ping_time=500
 FOR /F "skip=8 tokens=10" %%G in ('ping -n 3 google.com') DO set ping_time=%%G
 if %ping_time% GTR 0 (
-   
+
    echo Control checking of GPUs usage, timeout 30 sec...
    timeout /t 30 >nul
    goto:recheck
@@ -47,7 +47,7 @@ if %ping_time% GTR 0 (
    echo.
    echo Average Usage of *2 GPUs usage is [93m%gpu_average%%%[0m
    echo.
-   
+
    echo ping is [92m%ping_time%[0m - OK, not internet problem
    timeout /t 5 >nul
    goto :endif
@@ -91,7 +91,7 @@ goto :end
    for /F %%p in ('"C:\Program Files\NVIDIA Corporation\NVSMI\nvidia-smi" --id^=0 --query-gpu^=utilization.gpu --format^=csv^,noheader^,nounits') do set gpu_usage4=%%p
    for /F %%p in ('"C:\Program Files\NVIDIA Corporation\NVSMI\nvidia-smi" --id^=1 --query-gpu^=utilization.gpu --format^=csv^,noheader^,nounits') do set gpu_usage5=%%p
    for /F %%p in ('"C:\Program Files\NVIDIA Corporation\NVSMI\nvidia-smi" --id^=0 --query-gpu^=utilization.gpu --format^=csv^,noheader^,nounits') do set gpu_usage6=%%p
-   for /F %%p in ('"C:\Program Files\NVIDIA Corporation\NVSMI\nvidia-smi" --id^=1 --query-gpu^=utilization.gpu --format^=csv^,noheader^,nounits') do set gpu_usage7=%%p   
+   for /F %%p in ('"C:\Program Files\NVIDIA Corporation\NVSMI\nvidia-smi" --id^=1 --query-gpu^=utilization.gpu --format^=csv^,noheader^,nounits') do set gpu_usage7=%%p
    set /a total=%gpu_usage0%+%gpu_usage1%+%gpu_usage2%+%gpu_usage3%+%gpu_usage4%+%gpu_usage5%+%gpu_usage6%+%gpu_usage7%
    set /a gpu_average=%total%/8
 goto :endrecheck

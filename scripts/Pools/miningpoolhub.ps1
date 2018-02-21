@@ -20,7 +20,7 @@ $Locations | ForEach {
 
         $Stat = Set-Stat -Name "$($Name)_$($Algorithm)_Profit" -Value ([decimal]$_.profit/1000000000)
         $Price = (($Stat.Live*(1-[Math]::Min($Stat.Day_Fluctuation,1)))+($Stat.Day*(0+[Math]::Min($Stat.Day_Fluctuation,1))))
-        
+
         [PSCustomObject]@{
             Algorithm = $Algorithm
             Info = $Coin
@@ -34,7 +34,7 @@ $Locations | ForEach {
             Location = $Location
             SSL = $false
         }
-        
+
         [PSCustomObject]@{
             Algorithm = $Algorithm
             Info = $Coin

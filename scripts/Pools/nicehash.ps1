@@ -11,14 +11,14 @@ $Locations = "eu", "usa", "hk", "jp", "in", "br"
 
 $Locations | ForEach-Object {
     $NiceHash_Location = $_
-    
+
     switch ($NiceHash_Location) {
         "eu" {$Location = "Europe"}
         "usa" {$Location = "US"}
         "jp" {$Location = "JP"}
         default {$Location = "Asia"}
     }
-    
+
     $NiceHash_Request.result.simplemultialgo | ForEach-Object {
         $NiceHash_Host = "$($_.name).$NiceHash_Location.nicehash.com"
         $NiceHash_Port = $_.port
@@ -28,7 +28,7 @@ $Locations | ForEach-Object {
         $Divisor = 1000000000
 
         $Stat = Set-Stat -Name "$($Name)_$($NiceHash_Algorithm)_Profit" -Value ([Double]$_.paying / $Divisor)
-        
+
         if ($Wallet) {
             [PSCustomObject]@{
                 Algorithm     = $NiceHash_Algorithm

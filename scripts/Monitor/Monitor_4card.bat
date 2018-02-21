@@ -32,7 +32,7 @@ set log_file=mining_problems_log.txt
 set ping_time=500
 FOR /F "skip=8 tokens=10" %%G in ('ping -n 3 google.com') DO set ping_time=%%G
 if %ping_time% GTR 0 (
-   
+
    echo Control checking of GPUs usage, timeout 30 sec...
    timeout /t 30 >nul
    goto:recheck
@@ -44,7 +44,7 @@ if %ping_time% GTR 0 (
    echo.
    echo Average Usage of *4 GPUs usage is [93m%gpu_average%%%[0m
    echo.
-   
+
    echo ping is [92m%ping_time%[0m - OK, not internet problem
    timeout /t 5 >nul
    goto :endif
